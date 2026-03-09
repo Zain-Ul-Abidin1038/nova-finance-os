@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Core color palette for NovaLedger AI Glassmorphism theme
+/// Core color palette for Finance OS Glassmorphism theme
 class AppColors {
   // Primary Background - Deep Charcoal
   static const Color background = Color(0xFF0A0C10);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/core/services/nova_service.dart';
+import 'package:nova_finance_os/core/services/nova_service.dart';
 
 class NovaTestScreen extends ConsumerStatefulWidget {
   const NovaTestScreen({super.key});

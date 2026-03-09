@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_live_nova_ledger_ai/features/currency/services/currency_service.dart';
-import 'package:nova_live_nova_ledger_ai/features/currency/domain/currency_rate.dart';
+import 'package:nova_live_nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_live_nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_live_nova_finance_os/features/currency/services/currency_service.dart';
+import 'package:nova_live_nova_finance_os/features/currency/domain/currency_rate.dart';
 
 class CurrencyConverterScreen extends ConsumerStatefulWidget {
   const CurrencyConverterScreen({super.key});

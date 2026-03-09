@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_ledger_ai/features/marathon/services/marathon_agent.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_finance_os/features/marathon/services/marathon_agent.dart';
 
 class MarathonScreen extends ConsumerStatefulWidget {
   const MarathonScreen({super.key});

@@ -1,12 +1,12 @@
 # Amazon Nova Integration Guide
 
-## NovaLedger AI - Amazon Nova AI Hackathon Project
+## Finance OS - Amazon Nova AI Hackathon Project
 
 ---
 
 ## Overview
 
-This document provides comprehensive details on how NovaLedger AI integrates with Amazon Nova AI services through AWS Bedrock. It covers all models used, API endpoints, request/response formats, and best practices.
+This document provides comprehensive details on how Finance OS integrates with Amazon Nova AI services through AWS Bedrock. It covers all models used, API endpoints, request/response formats, and best practices.
 
 ---
 
@@ -606,7 +606,7 @@ void main() {
 
 ## Conclusion
 
-NovaLedger AI leverages the full power of Amazon Nova AI services to provide intelligent, autonomous financial management. The integration is designed for scalability, cost-efficiency, and reliability.
+Finance OS leverages the full power of Amazon Nova AI services to provide intelligent, autonomous financial management. The integration is designed for scalability, cost-efficiency, and reliability.
 
 ---
 

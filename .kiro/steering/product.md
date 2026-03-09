@@ -2,7 +2,7 @@
 inclusion: always
 ---
 
-# NovaLedger AI
+# Finance OS
 
 An AI-powered expense tracking and accounting assistant app that uses visual AI (Nova) to analyze receipts and automatically calculate tax-deductible amounts.
 

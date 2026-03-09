@@ -17,10 +17,10 @@ git branch -M main
 
 ```bash
 # Replace with your GitHub repository URL
-git remote add origin https://github.com/YOUR_USERNAME/nova_ledger_ai.git
+git remote add origin https://github.com/YOUR_USERNAME/nova_finance_os.git
 
 # Or if using SSH:
-git remote add origin git@github.com:YOUR_USERNAME/nova_ledger_ai.git
+git remote add origin git@github.com:YOUR_USERNAME/nova_finance_os.git
 
 # Verify remote
 git remote -v
@@ -40,7 +40,7 @@ git status
 
 ```bash
 # Commit with message
-git commit -m "🎉 NovaLedger AI v1.0.0 - Initial Release
+git commit -m "🎉 Finance OS v1.0.0 - Initial Release
 
 - 50+ AI systems implemented
 - Receipt scanning with Nova AI
@@ -70,7 +70,7 @@ git push -u origin main --force
 
 1. **Go to your repository on GitHub**
    ```
-   https://github.com/YOUR_USERNAME/nova_ledger_ai
+   https://github.com/YOUR_USERNAME/nova_finance_os
    ```
 
 2. **Click on "Releases"** (right sidebar)
@@ -79,7 +79,7 @@ git push -u origin main --force
 
 4. **Fill in release information:**
    - **Tag version:** `v1.0.0`
-   - **Release title:** `NovaLedger AI v1.0.0 - AI-Powered Financial Life OS`
+   - **Release title:** `Finance OS v1.0.0 - AI-Powered Financial Life OS`
    - **Description:** Copy from `GITHUB_RELEASE.md`
 
 5. **Upload files:**
@@ -108,7 +108,7 @@ gh auth login
 
 # Create release
 gh release create v1.0.0 \
-  --title "NovaLedger AI v1.0.0 - AI-Powered Financial Life OS" \
+  --title "Finance OS v1.0.0 - AI-Powered Financial Life OS" \
   --notes-file GITHUB_RELEASE.md \
   release/nova-accountant-v1.0.0-android.apk \
   release/checksums.txt \
@@ -141,7 +141,7 @@ git status
 
 ### Check GitHub
 
-1. Visit your repository: `https://github.com/YOUR_USERNAME/nova_ledger_ai`
+1. Visit your repository: `https://github.com/YOUR_USERNAME/nova_finance_os`
 2. Verify all files are uploaded
 3. Check README displays correctly
 4. Verify release is published
@@ -189,7 +189,7 @@ git status
 ssh -T git@github.com
 
 # Or use HTTPS instead
-git remote set-url origin https://github.com/YOUR_USERNAME/nova_ledger_ai.git
+git remote set-url origin https://github.com/YOUR_USERNAME/nova_finance_os.git
 ```
 
 ### "Repository not found" Error
@@ -200,7 +200,7 @@ git remote set-url origin https://github.com/YOUR_USERNAME/nova_ledger_ai.git
 # Verify you have access
 
 # Update remote URL
-git remote set-url origin https://github.com/YOUR_USERNAME/nova_ledger_ai.git
+git remote set-url origin https://github.com/YOUR_USERNAME/nova_finance_os.git
 ```
 
 ### Large File Warning
@@ -236,12 +236,12 @@ git init
 git add .
 git commit -m "🎉 Initial release v1.0.0"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/nova_ledger_ai.git
+git remote add origin https://github.com/YOUR_USERNAME/nova_finance_os.git
 git push -u origin main
 
 # Create release via GitHub CLI
 gh release create v1.0.0 \
-  --title "NovaLedger AI v1.0.0" \
+  --title "Finance OS v1.0.0" \
   --notes-file GITHUB_RELEASE.md \
   release/nova-accountant-v1.0.0-android.apk \
   release/checksums.txt \

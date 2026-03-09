@@ -7,13 +7,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_ledger_ai/core/theme/theme_provider.dart';
-import 'package:nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_ledger_ai/core/presentation/widgets/nova_logo.dart';
-import 'package:nova_ledger_ai/features/chat/services/simple_chat_service.dart';
-import 'package:nova_ledger_ai/features/receipts/services/hive_transaction_provider.dart';
-import 'package:nova_ledger_ai/core/services/permission_service.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/theme_provider.dart';
+import 'package:nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_finance_os/core/presentation/widgets/nova_logo.dart';
+import 'package:nova_finance_os/features/chat/services/simple_chat_service.dart';
+import 'package:nova_finance_os/features/receipts/services/hive_transaction_provider.dart';
+import 'package:nova_finance_os/core/services/permission_service.dart';
 
 class IntelligentChatScreen extends ConsumerStatefulWidget {
   const IntelligentChatScreen({super.key});
@@ -44,7 +44,7 @@ class _IntelligentChatScreenState extends ConsumerState<IntelligentChatScreen> {
       if (messages.isEmpty) {
         // Add welcome message
         final welcomeMessage = ChatMessage(
-          text: 'Hello! I\'m NovaLedger AI, your intelligent financial assistant. I can help you:\n\n• Track expenses and income\n• Manage loans and IOUs\n• Analyze spending patterns\n• Provide financial insights\n\nJust tell me what you spent or ask me anything!',
+          text: 'Hello! I\'m Finance OS, your intelligent financial assistant. I can help you:\n\n• Track expenses and income\n• Manage loans and IOUs\n• Analyze spending patterns\n• Provide financial insights\n\nJust tell me what you spent or ask me anything!',
           isUser: false,
           timestamp: DateTime.now(),
         );
@@ -445,7 +445,7 @@ class _IntelligentChatScreenState extends ConsumerState<IntelligentChatScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'NovaLedger AI',
+                  'Finance OS',
                   style: TextStyle(
                     color: textColor,
                     fontSize: 18,

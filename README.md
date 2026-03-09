@@ -1,14 +1,14 @@
-# NovaLedger AI
+# Finance OS
 
 🏆 **Built for the Amazon Nova AI Hackathon 2026**
 
-**NovaLedger AI is the first Autonomous Financial Life Operating System powered entirely by Amazon Nova.**
+**Finance OS is the first Autonomous Financial Life Operating System powered entirely by Amazon Nova.**
 
 *The Autonomous Financial Life Operating System powered by Amazon Nova reasoning, embeddings, and intelligent agents.*
 
 ---
 
-**NovaLedger AI demonstrates how Amazon Nova can power real-world autonomous AI systems, not just chatbots.**
+**Finance OS demonstrates how Amazon Nova can power real-world autonomous AI systems, not just chatbots.**
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.10.8-02569B?logo=flutter)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.10.8-0175C2?logo=dart)](https://dart.dev)
@@ -20,11 +20,11 @@
 
 ## 🌟 Amazon Nova AI Hackathon Project
 
-NovaLedger AI is a revolutionary AI-powered financial operating system built specifically for the **Amazon Nova AI Hackathon**. It transforms personal and business finance management from a manual, reactive process into an **autonomous, proactive, AI-driven experience** powered by Amazon Nova's cutting-edge reasoning models, multimodal embeddings, and intelligent agents.
+Finance OS is a revolutionary AI-powered financial operating system built specifically for the **Amazon Nova AI Hackathon**. It transforms personal and business finance management from a manual, reactive process into an **autonomous, proactive, AI-driven experience** powered by Amazon Nova's cutting-edge reasoning models, multimodal embeddings, and intelligent agents.
 
-### 🎯 What is NovaLedger AI?
+### 🎯 What is Finance OS?
 
-NovaLedger AI is not just an expense tracker—it's a complete **Financial Life Operating System** that:
+Finance OS is not just an expense tracker—it's a complete **Financial Life Operating System** that:
 
 - **Understands** your financial situation using Nova 2 Lite reasoning
 - **Predicts** cashflow and financial outcomes with AI forecasting
@@ -44,9 +44,9 @@ Financial management today is fragmented across multiple tools:
 - Tax calculators
 - Investment trackers
 
-**NovaLedger AI unifies these into a single AI-driven financial operating system that can understand, reason, and act on behalf of users.**
+**Finance OS unifies these into a single AI-driven financial operating system that can understand, reason, and act on behalf of users.**
 
-By leveraging Amazon Nova's reasoning models and agent automation, NovaLedger AI introduces a new paradigm:
+By leveraging Amazon Nova's reasoning models and agent automation, Finance OS introduces a new paradigm:
 
 **Autonomous personal finance.**
 
@@ -58,7 +58,7 @@ By leveraging Amazon Nova's reasoning models and agent automation, NovaLedger AI
 User (Mobile / Web)
         │
         ▼
-Flutter App (NovaLedger AI)
+Flutter App (Finance OS)
         │
         ▼
 AWS Amplify Backend
@@ -89,7 +89,7 @@ Data Layer
 
 ## 🤔 Why Amazon Nova?
 
-NovaLedger AI specifically uses Amazon Nova because it provides:
+Finance OS specifically uses Amazon Nova because it provides:
 
 ### High-Speed Reasoning
 **Nova 2 Lite** enables fast financial decision-making in real time, processing complex financial scenarios in milliseconds.
@@ -103,13 +103,13 @@ NovaLedger AI specifically uses Amazon Nova because it provides:
 ### Cloud-Native Scalability
 **AWS Bedrock** provides secure and scalable infrastructure, ensuring bank-grade security and unlimited scalability.
 
-**Together, these capabilities enable NovaLedger AI to function as an autonomous financial operating system.**
+**Together, these capabilities enable Finance OS to function as an autonomous financial operating system.**
 
 ---
 
 ## 🚀 Why Amazon Nova Makes This Possible
 
-NovaLedger AI leverages Amazon Nova's unique capabilities to create a truly autonomous financial operating system:
+Finance OS leverages Amazon Nova's unique capabilities to create a truly autonomous financial operating system:
 
 ### Nova 2 Lite
 - **Fast reasoning** for financial decision making
@@ -134,7 +134,7 @@ NovaLedger AI leverages Amazon Nova's unique capabilities to create a truly auto
 - **Document analysis** for financial statements
 - **Image understanding** for expense categorization
 
-**Together, these capabilities enable NovaLedger AI to function as a financial co-pilot that not only understands finances but can safely act on them.**
+**Together, these capabilities enable Finance OS to function as a financial co-pilot that not only understands finances but can safely act on them.**
 
 ---
 
@@ -142,7 +142,7 @@ NovaLedger AI leverages Amazon Nova's unique capabilities to create a truly auto
 
 ### Why Amazon Nova?
 
-NovaLedger AI leverages the complete Amazon Nova stack:
+Finance OS leverages the complete Amazon Nova stack:
 
 ✅ **Nova 2 Lite** - Fast, cost-effective reasoning for financial insights and decision synthesis  
 ✅ **Nova Multimodal Embeddings** - Semantic search for financial knowledge and tax policies  
@@ -197,7 +197,7 @@ NovaAgentOrchestrator
 
 ## 💡 Financial Autopilot
 
-NovaLedger AI introduces **Financial Autopilot**, an AI system that continuously optimizes your finances.
+Finance OS introduces **Financial Autopilot**, an AI system that continuously optimizes your finances.
 
 The system:
 - **Predicts future cashflow** using Nova 2 Lite reasoning
@@ -246,13 +246,13 @@ All powered by Amazon Nova reasoning and intelligent agents working together 24/
 
 ## 🎬 3-Minute Hackathon Demo
 
-**Experience NovaLedger AI in action:**
+**Experience Finance OS in action:**
 
 ### Step 1: Receipt Scan
 User scans a restaurant receipt.
 
 **Nova Action:**
-- NovaLedger AI extracts vendor, amount, and tax category using multimodal vision
+- Finance OS extracts vendor, amount, and tax category using multimodal vision
 - The AI updates the user's financial model in real-time
 
 ### Step 2: Financial Analysis
@@ -317,7 +317,7 @@ User approves the strategy.
 
 **Category:** Agentic AI & Autonomous Systems
 
-NovaLedger AI demonstrates:
+Finance OS demonstrates:
 - ✅ Multi-agent coordination (NovaAgent system)
 - ✅ Autonomous decision-making (30% auto-execution)
 - ✅ Intelligent reasoning (Nova Lite financial brain)
@@ -351,8 +351,8 @@ NovaLedger AI demonstrates:
 
 #### 1. Clone Repository
 ```bash
-git clone https://github.com/Zain-Ul-Abidin1038/nova-leadger_ai.git
-cd nova-leadger_ai
+git clone https://github.com/Zain-Ul-Abidin1038/nova-finance-os.git
+cd nova-finance-os
 ```
 
 #### 2. Install Dependencies
@@ -440,7 +440,7 @@ flutter run -d iPhone        # iOS
 
 ## 🌍 Community Impact
 
-NovaLedger AI makes intelligent financial planning accessible to everyone:
+Finance OS makes intelligent financial planning accessible to everyone:
 
 ### Who We Help
 
@@ -464,7 +464,7 @@ NovaLedger AI makes intelligent financial planning accessible to everyone:
 - Free financial literacy through AI education
 - Mobile-first design for global reach
 
-By reducing the complexity of financial management, NovaLedger AI democratizes access to sophisticated financial intelligence that was previously available only to the wealthy.
+By reducing the complexity of financial management, Finance OS democratizes access to sophisticated financial intelligence that was previously available only to the wealthy.
 
 ---
 
@@ -568,7 +568,7 @@ Each agent specializes in a domain while collaborating to achieve complex financ
 
 ## 📸 Screenshots
 
-*Coming soon — demo screenshots of NovaLedger AI in action.*
+*Coming soon — demo screenshots of Finance OS in action.*
 
 ---
 
@@ -649,7 +649,7 @@ Each agent specializes in a domain while collaborating to achieve complex financ
 
 ---
 
-## 🏆 What Makes NovaLedger AI Unique
+## 🏆 What Makes Finance OS Unique
 
 ### 1. Full Amazon Nova Stack
 - **Complete Integration** - Uses Nova 2 Lite, Multimodal Embeddings, and Nova Act
@@ -738,15 +738,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Documentation**: Check the `/docs` folder for detailed guides
-- **Issues**: [GitHub Issues](https://github.com/Zain-Ul-Abidin1038/nova-leadger_ai/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Zain-Ul-Abidin1038/nova-leadger_ai/discussions)
-- **Email**: support@novaledger.ai
+- **Issues**: [GitHub Issues](https://github.com/Zain-Ul-Abidin1038/nova-finance-os/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Zain-Ul-Abidin1038/nova-finance-os/discussions)
+- **Email**: support@financeos.ai
 
 ---
 
 ## 🎉 The Result
 
-NovaLedger AI is an **autonomous financial intelligence platform built on Amazon Nova** that demonstrates the full power of Amazon Nova:
+Finance OS is an **autonomous financial intelligence platform built on Amazon Nova** that demonstrates the full power of Amazon Nova:
 
 1. **Understands** finances with Nova 2 Lite reasoning
 2. **Predicts** outcomes with AI forecasting
@@ -765,9 +765,9 @@ NovaLedger AI is an **autonomous financial intelligence platform built on Amazon
 
 ## 🚀 Built for the Future of Autonomous AI
 
-NovaLedger AI demonstrates how Amazon Nova can power the next generation of intelligent systems.
+Finance OS demonstrates how Amazon Nova can power the next generation of intelligent systems.
 
-Instead of simply answering questions, NovaLedger AI:
+Instead of simply answering questions, Finance OS:
 - **Understands** financial situations through multimodal analysis
 - **Reasons** about future outcomes using Nova 2 Lite
 - **Collaborates** through specialized agents working together
@@ -775,7 +775,7 @@ Instead of simply answering questions, NovaLedger AI:
 
 **This project showcases how Amazon Nova can enable truly autonomous applications.**
 
-By combining Nova's reasoning, embeddings, and agent capabilities, NovaLedger AI represents a new paradigm in AI applications: systems that don't just assist users, but actively manage complex domains on their behalf.
+By combining Nova's reasoning, embeddings, and agent capabilities, Finance OS represents a new paradigm in AI applications: systems that don't just assist users, but actively manage complex domains on their behalf.
 
 ---
 

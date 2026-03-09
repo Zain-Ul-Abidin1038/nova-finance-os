@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/cashflow_point.dart';
-import 'package:nova_ledger_ai/features/finance/domain/transaction_model.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/features/analytics/domain/cashflow_point.dart';
+import 'package:nova_finance_os/features/finance/domain/transaction_model.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 
 final cashflowPredictorProvider = Provider((ref) => CashflowPredictor(

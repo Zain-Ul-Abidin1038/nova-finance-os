@@ -1,4 +1,4 @@
-# NovaLedger AI v1.0.0 - Release Notes
+# Finance OS v1.0.0 - Release Notes
 
 **Release Date:** February 10, 2026  
 **Version:** 1.0.0 (Build 1)  
@@ -8,7 +8,7 @@
 
 ## 🎉 What's New
 
-NovaLedger AI v1.0.0 is the first production release of the world's first **AI-Powered Financial Life Operating System**. This release includes 50+ integrated AI systems working together to provide intelligent, autonomous financial management.
+Finance OS v1.0.0 is the first production release of the world's first **AI-Powered Financial Life Operating System**. This release includes 50+ integrated AI systems working together to provide intelligent, autonomous financial management.
 
 ---
 
@@ -328,8 +328,8 @@ NovaLedger AI v1.0.0 is the first production release of the world's first **AI-P
 
 ### Getting Help
 - **Documentation:** Check `/docs` folder
-- **Issues:** [GitHub Issues](https://github.com/your-org/nova_ledger_ai/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/your-org/nova_ledger_ai/discussions)
+- **Issues:** [GitHub Issues](https://github.com/your-org/nova_finance_os/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/your-org/nova_finance_os/discussions)
 - **Email:** support@novaaccountant.com
 
 ### Reporting Bugs
@@ -407,7 +407,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🏆 What Makes This Special
 
-NovaLedger AI is the world's first **Financial Life Operating System** that:
+Finance OS is the world's first **Financial Life Operating System** that:
 
 1. **Understands** your financial situation comprehensively
 2. **Predicts** future cashflow and life events

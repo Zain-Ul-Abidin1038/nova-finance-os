@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:nova_live_nova_ledger_ai/features/community/domain/community.dart';
+import 'package:nova_live_nova_finance_os/features/community/domain/community.dart';
 import 'package:uuid/uuid.dart';
 
 final communityServiceProvider = Provider((ref) => CommunityService());

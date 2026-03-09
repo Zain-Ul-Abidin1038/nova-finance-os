@@ -1,4 +1,4 @@
-# GitHub Setup Instructions for NovaLedger AI
+# GitHub Setup Instructions for Finance OS
 
 ## Creating a New GitHub Repository
 
@@ -16,7 +16,7 @@
 
 ### Step 2: Push to GitHub
 
-Once you have created the repository, run these commands in the `nova_ledger_ai` directory:
+Once you have created the repository, run these commands in the `nova_finance_os` directory:
 
 ```bash
 # Add the remote repository
@@ -59,7 +59,7 @@ An Autonomous Financial Life Operating System powered by Amazon Nova - Built for
 
 **Website:**
 ```
-https://novaledger.ai (or your demo URL)
+https://financeos.ai (or your demo URL)
 ```
 
 ---
@@ -129,16 +129,16 @@ NovaLedger-AI/
 3. Click "Create a new release"
 4. Fill in the details:
    - **Tag version:** `v1.0.0`
-   - **Release title:** `NovaLedger AI v1.0.0 - Amazon Nova Hackathon Edition`
+   - **Release title:** `Finance OS v1.0.0 - Amazon Nova Hackathon Edition`
    - **Description:**
      ```markdown
-     # NovaLedger AI v1.0.0
+     # Finance OS v1.0.0
      
      **An Autonomous Financial Life Operating System powered by Amazon Nova**
      
      ## Amazon Nova AI Hackathon Submission
      
-     This is the initial release of NovaLedger AI, built specifically for the Amazon Nova AI Hackathon.
+     This is the initial release of Finance OS, built specifically for the Amazon Nova AI Hackathon.
      
      ## Key Features
      
@@ -221,7 +221,7 @@ You can add CI/CD workflows later. For now, the repository is ready for the hack
 ✅ This repository is a completely new project  
 ✅ No Git history from the original Nova Accountant  
 ✅ Fresh Git repository initialized  
-✅ All references renamed to NovaLedger AI  
+✅ All references renamed to Finance OS  
 ✅ Amazon Nova integration added  
 ✅ Ready for hackathon submission  
 
@@ -232,7 +232,7 @@ You can add CI/CD workflows later. For now, the repository is ready for the hack
 - ❌ Vertex AI Search
 - ❌ Google Cloud Platform
 
-**To NovaLedger AI:**
+**To Finance OS:**
 - ✅ Amazon Nova 2 Lite
 - ✅ Amazon Nova Pro
 - ✅ Amazon Titan Embeddings
@@ -260,7 +260,7 @@ If you encounter any issues:
 1. Check the documentation in the repository
 2. Review the NOVA_INTEGRATION.md guide
 3. Open an issue on GitHub
-4. Contact: support@novaledger.ai
+4. Contact: support@financeos.ai
 
 ---
 

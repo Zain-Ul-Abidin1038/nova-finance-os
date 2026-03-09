@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_live_nova_ledger_ai/features/enterprise/white_label/domain/tenant.dart';
-import 'package:nova_live_nova_ledger_ai/features/enterprise/white_label/services/white_label_service.dart';
+import 'package:nova_live_nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_live_nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_live_nova_finance_os/features/enterprise/white_label/domain/tenant.dart';
+import 'package:nova_live_nova_finance_os/features/enterprise/white_label/services/white_label_service.dart';
 import 'package:intl/intl.dart';
 
 class WhiteLabelScreen extends ConsumerStatefulWidget {

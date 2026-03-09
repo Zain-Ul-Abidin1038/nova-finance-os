@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide demonstrates professional DevOps practices for NovaLedger AI, showcasing automated CI/CD, infrastructure as code, and production-ready deployment strategies.
+This guide demonstrates professional DevOps practices for Finance OS, showcasing automated CI/CD, infrastructure as code, and production-ready deployment strategies.
 
 ---
 
@@ -51,8 +51,8 @@ This guide demonstrates professional DevOps practices for NovaLedger AI, showcas
 ### Step 1: Fork/Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/nova_ledger_ai.git
-cd nova_ledger_ai
+git clone https://github.com/YOUR_USERNAME/nova_finance_os.git
+cd nova_finance_os
 ```
 
 ### Step 2: Set Up Firebase
@@ -330,9 +330,9 @@ const apiKey = String.fromEnvironment(
 Add to README.md:
 
 ```markdown
-![CI Status](https://github.com/YOUR_USERNAME/nova_ledger_ai/workflows/CI/badge.svg)
-![Deploy Status](https://github.com/YOUR_USERNAME/nova_ledger_ai/workflows/Deploy%20Web/badge.svg)
-[![codecov](https://codecov.io/gh/YOUR_USERNAME/nova_ledger_ai/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR_USERNAME/nova_ledger_ai)
+![CI Status](https://github.com/YOUR_USERNAME/nova_finance_os/workflows/CI/badge.svg)
+![Deploy Status](https://github.com/YOUR_USERNAME/nova_finance_os/workflows/Deploy%20Web/badge.svg)
+[![codecov](https://codecov.io/gh/YOUR_USERNAME/nova_finance_os/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR_USERNAME/nova_finance_os)
 ```
 
 ### Firebase Analytics
@@ -525,7 +525,7 @@ Each workflow includes:
 
 ### Technical Excellence
 
-> "NovaLedger AI implements professional DevOps practices with automated CI/CD pipelines, infrastructure as code, and multi-environment deployment strategies. Our GitHub Actions workflows ensure code quality through automated testing, security scanning, and continuous deployment."
+> "Finance OS implements professional DevOps practices with automated CI/CD pipelines, infrastructure as code, and multi-environment deployment strategies. Our GitHub Actions workflows ensure code quality through automated testing, security scanning, and continuous deployment."
 
 ### Innovation
 
@@ -565,6 +565,6 @@ Each workflow includes:
 
 **Status:** ✅ Production Ready with Professional DevOps
 
-**Maintained by:** NovaLedger AI Team
+**Maintained by:** Finance OS Team
 
 **Last Updated:** February 2026

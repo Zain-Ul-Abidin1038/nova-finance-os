@@ -4,14 +4,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_ledger_ai/core/theme/theme_provider.dart';
-import 'package:nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_ledger_ai/features/receipts/services/hive_transaction_provider.dart';
-import 'package:nova_ledger_ai/core/services/nova_service.dart';
-import 'package:nova_ledger_ai/core/services/aws_memory_service.dart';
-import 'package:nova_ledger_ai/core/services/error_handler_service.dart';
-import 'package:nova_ledger_ai/core/services/validation_service.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/theme_provider.dart';
+import 'package:nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_finance_os/features/receipts/services/hive_transaction_provider.dart';
+import 'package:nova_finance_os/core/services/nova_service.dart';
+import 'package:nova_finance_os/core/services/aws_memory_service.dart';
+import 'package:nova_finance_os/core/services/error_handler_service.dart';
+import 'package:nova_finance_os/core/services/validation_service.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   const ChatScreen({super.key});
@@ -30,7 +30,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     super.initState();
     // Add welcome message
     _messages.add(ChatMessage(
-      text: 'Hello! I\'m your NovaLedger AI AI assistant. Ask me anything about your expenses, tax deductions, or financial insights.',
+      text: 'Hello! I\'m your Finance OS AI assistant. Ask me anything about your expenses, tax deductions, or financial insights.',
       isUser: false,
       timestamp: DateTime.now(),
     ));
@@ -387,7 +387,7 @@ Please provide a helpful response about their expenses, tax deductions, or finan
                           fontSize: 15,
                         ),
                         decoration: InputDecoration(
-                          hintText: 'Ask NovaLedger AI...',
+                          hintText: 'Ask Finance OS...',
                           hintStyle: TextStyle(
                             color: secondaryTextColor.withValues(alpha: 0.6),
                             fontSize: 15,

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_ledger_ai/core/theme/theme_provider.dart';
-import 'package:nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_ledger_ai/features/finance/services/unified_finance_service.dart';
-import 'package:nova_ledger_ai/features/finance/domain/income_entry.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/theme_provider.dart';
+import 'package:nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_finance_os/features/finance/services/unified_finance_service.dart';
+import 'package:nova_finance_os/features/finance/domain/income_entry.dart';
 
 class IncomeScreen extends ConsumerWidget {
   const IncomeScreen({super.key});

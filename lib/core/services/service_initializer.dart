@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/core/services/aws_memory_service.dart';
-import 'package:nova_ledger_ai/core/services/audit_vault_service.dart';
-import 'package:nova_ledger_ai/features/auth/services/auth_service.dart';
+import 'package:nova_finance_os/core/services/aws_memory_service.dart';
+import 'package:nova_finance_os/core/services/audit_vault_service.dart';
+import 'package:nova_finance_os/features/auth/services/auth_service.dart';
 
 final serviceInitializerProvider = Provider((ref) => ServiceInitializer(ref));
 

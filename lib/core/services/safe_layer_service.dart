@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/trace/services/nova_trace_service.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/trace/services/nova_trace_service.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
 
 final safeLayerServiceProvider = Provider((ref) => SafeLayerService(ref));
 

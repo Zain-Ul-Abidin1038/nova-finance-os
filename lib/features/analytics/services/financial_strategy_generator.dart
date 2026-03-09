@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
 import '../domain/user_financial_profile.dart';
 import '../domain/financial_strategy.dart';
 
@@ -90,7 +90,7 @@ Format each section with clear, actionable steps.
   }
 
   String _getSystemInstruction() {
-    return '''You are a professional financial strategist for NovaLedger AI.
+    return '''You are a professional financial strategist for Finance OS.
 
 Your role:
 - Analyze financial data comprehensively

@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_ledger_ai/core/theme/theme_provider.dart';
-import 'package:nova_ledger_ai/core/presentation/widgets/nova_logo.dart';
-import 'package:nova_ledger_ai/features/trace/services/nova_trace_service.dart';
-import 'package:nova_ledger_ai/features/finance/services/ai_finance_parser.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/theme_provider.dart';
+import 'package:nova_finance_os/core/presentation/widgets/nova_logo.dart';
+import 'package:nova_finance_os/features/trace/services/nova_trace_service.dart';
+import 'package:nova_finance_os/features/finance/services/ai_finance_parser.dart';
 
 class EnhancedChatScreen extends ConsumerStatefulWidget {
   const EnhancedChatScreen({super.key});
@@ -208,7 +208,7 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
             
             // Title
             Text(
-              'NovaLedger AI',
+              'Finance OS',
               style: TextStyle(
                 color: textColor,
                 fontSize: 28,

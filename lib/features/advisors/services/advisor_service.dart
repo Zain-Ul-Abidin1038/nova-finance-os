@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:nova_live_nova_ledger_ai/features/advisors/domain/advisor.dart';
+import 'package:nova_live_nova_finance_os/features/advisors/domain/advisor.dart';
 import 'package:uuid/uuid.dart';
 
 final advisorServiceProvider = Provider((ref) => AdvisorService());

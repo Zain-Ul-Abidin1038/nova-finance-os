@@ -1,7 +1,7 @@
-import 'package:nova_ledger_ai/features/analytics/domain/coach_action.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/cashflow_point.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/tax_plan.dart';
-import 'package:nova_ledger_ai/features/finance/domain/transaction_model.dart';
+import 'package:nova_finance_os/features/analytics/domain/coach_action.dart';
+import 'package:nova_finance_os/features/analytics/domain/cashflow_point.dart';
+import 'package:nova_finance_os/features/analytics/domain/tax_plan.dart';
+import 'package:nova_finance_os/features/finance/domain/transaction_model.dart';
 
 /// Brain State - Complete Financial Intelligence Output
 /// 

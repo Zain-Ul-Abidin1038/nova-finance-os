@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
-import 'package:nova_ledger_ai/features/grounded_chat/services/grounded_search_service.dart';
-import 'package:nova_ledger_ai/features/chat/services/simple_chat_service.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/features/grounded_chat/services/grounded_search_service.dart';
+import 'package:nova_finance_os/features/chat/services/simple_chat_service.dart';
 
 final groundedChatServiceProvider = Provider((ref) => GroundedChatService(
       novaService: ref.read(novaServiceV3Provider),
@@ -64,13 +64,13 @@ class GroundedChatService {
         // Use document grounding for tax/accounting questions
         result = await groundedSearch.searchWithDocumentGrounding(
           query: message,
-          context: 'You are NovaLedger AI, an AI financial assistant.',
+          context: 'You are Finance OS, an AI financial assistant.',
         );
       } else {
         // Use web grounding for general factual questions
         result = await groundedSearch.searchWithWebGrounding(
           query: message,
-          context: 'You are NovaLedger AI, an AI financial assistant.',
+          context: 'You are Finance OS, an AI financial assistant.',
         );
       }
 

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_ledger_ai/core/theme/theme_provider.dart';
-import 'package:nova_ledger_ai/core/theme/glass_widgets.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/theme_provider.dart';
+import 'package:nova_finance_os/core/theme/glass_widgets.dart';
 
 class VoiceScreen extends ConsumerStatefulWidget {
   const VoiceScreen({super.key});

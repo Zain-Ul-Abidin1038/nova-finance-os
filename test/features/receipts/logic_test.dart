@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nova_ledger_ai/features/sync/services/safe_layer_service.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/sync/services/safe_layer_service.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
 
 void main() {
   group('Safe Layer Logic (SafeLayerService)', () {

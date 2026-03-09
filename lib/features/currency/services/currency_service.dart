@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_live_nova_ledger_ai/features/currency/domain/currency_rate.dart';
+import 'package:nova_live_nova_finance_os/features/currency/domain/currency_rate.dart';
 
 final currencyServiceProvider = Provider((ref) => CurrencyService());
 

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/financial_snapshot.dart';
+import 'package:nova_finance_os/features/analytics/domain/financial_snapshot.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 
 final financialHealthEngineProvider = Provider((ref) => FinancialHealthEngine());

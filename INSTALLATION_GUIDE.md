@@ -1,4 +1,4 @@
-# NovaLedger AI - Installation Guide
+# Finance OS - Installation Guide
 
 **Version:** 1.0.0  
 **Last Updated:** February 10, 2026
@@ -10,7 +10,7 @@
 ### Method 1: Direct APK Installation (Recommended)
 
 #### Step 1: Download APK
-1. Go to [GitHub Releases](https://github.com/your-org/nova_ledger_ai/releases)
+1. Go to [GitHub Releases](https://github.com/your-org/nova_finance_os/releases)
 2. Download `nova-accountant-v1.0.0-android.apk` (73.7 MB)
 3. Save to your device
 
@@ -89,7 +89,7 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 
 #### Step 3: Launch App
 1. Open TestFlight app
-2. Find **NovaLedger AI** in your apps
+2. Find **Finance OS** in your apps
 3. Tap **Open**
 4. Grant permissions when prompted
 
@@ -104,7 +104,7 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 
 ### Step 1: Create Account
 
-1. Launch NovaLedger AI
+1. Launch Finance OS
 2. Tap **Sign Up**
 3. Enter your email address
 4. Create a strong password (min 8 characters)
@@ -113,7 +113,7 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 
 ### Step 2: Configure Nova API
 
-**Important:** NovaLedger AI requires a Nova API key for AI features.
+**Important:** Finance OS requires a Nova API key for AI features.
 
 #### Get Nova API Key (Free)
 1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
@@ -122,7 +122,7 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 4. Copy the generated key
 
 #### Add API Key to App
-1. Open NovaLedger AI
+1. Open Finance OS
 2. Tap **Settings** (gear icon)
 3. Tap **API Configuration**
 4. Paste your Nova API key
@@ -194,14 +194,14 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 
 #### Camera Not Working
 **Solution:**
-1. Go to Settings > Apps > NovaLedger AI
+1. Go to Settings > Apps > Finance OS
 2. Tap Permissions
 3. Enable Camera permission
 4. Restart app
 
 #### Storage Access Denied
 **Solution:**
-1. Go to Settings > Apps > NovaLedger AI
+1. Go to Settings > Apps > Finance OS
 2. Tap Permissions
 3. Enable Storage permission
 4. Restart app
@@ -243,7 +243,7 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 
 #### App Crashes
 **Solution:**
-1. Clear app cache: Settings > Apps > NovaLedger AI > Clear Cache
+1. Clear app cache: Settings > Apps > Finance OS > Clear Cache
 2. Restart device
 3. Reinstall app
 4. Report issue on GitHub
@@ -281,7 +281,7 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 
 #### Method 1: Via Settings
 1. Go to Settings > Apps
-2. Find NovaLedger AI
+2. Find Finance OS
 3. Tap Uninstall
 4. Confirm removal
 
@@ -406,7 +406,7 @@ When reporting issues, please include:
 
 ## 🎉 You're Ready!
 
-Congratulations! NovaLedger AI is now installed and configured. 
+Congratulations! Finance OS is now installed and configured. 
 
 ### Next Steps:
 1. **Scan your first receipt** - Test the AI-powered OCR
@@ -418,11 +418,11 @@ Congratulations! NovaLedger AI is now installed and configured.
 ### Need Help?
 - Check the [Quick Start Guide](QUICK_START_GUIDE.md)
 - Read the [User Manual](USER_MANUAL.md) (coming soon)
-- Visit [GitHub Discussions](https://github.com/your-org/nova_ledger_ai/discussions)
+- Visit [GitHub Discussions](https://github.com/your-org/nova_finance_os/discussions)
 
 ---
 
-**Welcome to NovaLedger AI - Your AI-Powered Financial Life OS! 🚀**
+**Welcome to Finance OS - Your AI-Powered Financial Life OS! 🚀**
 
 **Version:** 1.0.0  
 **Last Updated:** February 10, 2026  

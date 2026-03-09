@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The Financial Verification System enhances the NovaLedger AI app with rigorous verification mechanisms for financial calculations and API operations. This system ensures accuracy and traceability by implementing split-step verification for tax deductions and thought signatures for all external API calls, providing users with transparent, auditable financial tracking.
+The Financial Verification System enhances the Finance OS app with rigorous verification mechanisms for financial calculations and API operations. This system ensures accuracy and traceability by implementing split-step verification for tax deductions and thought signatures for all external API calls, providing users with transparent, auditable financial tracking.
 
 ## Glossary
 
-- **System**: The Financial Verification System within NovaLedger AI
+- **System**: The Financial Verification System within Finance OS
 - **Receipt_Analyzer**: The component that processes receipt images using Nova AI
 - **Verification_Engine**: The component that executes split-step verification for calculations
 - **Thought_Signature**: A structured record capturing operation intent, inputs, outputs, and results

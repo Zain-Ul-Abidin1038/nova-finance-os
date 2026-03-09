@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
-import 'package:nova_ledger_ai/features/receipts/services/hive_transaction_provider.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/receipts/services/hive_transaction_provider.dart';
 
 final demoDataServiceProvider = Provider((ref) => DemoDataService(ref));
 

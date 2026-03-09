@@ -1,7 +1,7 @@
 # Cloud Services Restoration - Design Document
 
 ## Overview
-This document outlines the design for restoring cloud AI and backend services to NovaLedger AI, including Nova 3 Pro AI integration and AWS Amplify services (Cognito, S3).
+This document outlines the design for restoring cloud AI and backend services to Finance OS, including Nova 3 Pro AI integration and AWS Amplify services (Cognito, S3).
 
 ## Architecture
 

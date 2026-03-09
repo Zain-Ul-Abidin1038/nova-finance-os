@@ -37,7 +37,7 @@ class NovaService {
 
       // Build system instruction with memory context
       String fullSystemInstruction = systemInstruction ?? 
-          'You are a NovaLedger AI AI assistant specialized in tax deductions and financial analysis.';
+          'You are a Finance OS AI assistant specialized in tax deductions and financial analysis.';
       
       if (memoryContext != null && memoryContext.isNotEmpty) {
         fullSystemInstruction += '\n\n<financial_memory>\n';
@@ -136,7 +136,7 @@ class NovaService {
       final url = Uri.parse('$_baseUrl?key=$_apiKey');
 
       // Build system instruction with tax rules and memory
-      String systemInstruction = '''You are a NovaLedger AI AI specialized in receipt analysis and tax deductions.
+      String systemInstruction = '''You are a Finance OS AI specialized in receipt analysis and tax deductions.
 
 <tax_rules_2026>
 - Business meals: 50% deductible

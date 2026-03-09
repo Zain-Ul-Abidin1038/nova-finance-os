@@ -1,9 +1,9 @@
-# NovaLedger AI - AI for Good Hackathon 2026
+# Finance OS - AI for Good Hackathon 2026
 
 ## 🎯 Submission Overview
 
 **Team**: Solo Developer  
-**Project**: NovaLedger AI - AI-Powered Financial Inclusion Platform  
+**Project**: Finance OS - AI-Powered Financial Inclusion Platform  
 **Category**: AI for Good - Financial Inclusion & Accessibility  
 **Tech Stack**: Flutter, Firebase, Nova AI, AWS Amplify
 
@@ -13,7 +13,7 @@
 
 **1.7 billion people worldwide are unbanked** - they lack access to basic financial services, accounting knowledge, and tools to manage their money effectively. This creates a cycle of poverty and financial exclusion.
 
-NovaLedger AI democratizes financial expertise by putting a **chartered accountant in everyone's pocket**, powered by AI.
+Finance OS democratizes financial expertise by putting a **chartered accountant in everyone's pocket**, powered by AI.
 
 ---
 
@@ -174,8 +174,8 @@ An AI-powered mobile app that provides:
 ### Quick Start
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/nova_ledger_ai.git
-cd nova_ledger_ai
+git clone https://github.com/yourusername/nova_finance_os.git
+cd nova_finance_os
 
 # Install dependencies
 flutter pub get
@@ -284,9 +284,9 @@ MIT License - Free for all to use and contribute
 
 ## 🎯 Conclusion
 
-NovaLedger AI is not just an app - it's a **movement towards financial inclusion**. By combining cutting-edge AI with accessible design, we're putting the power of a chartered accountant in the hands of 1.7 billion unbanked people worldwide.
+Finance OS is not just an app - it's a **movement towards financial inclusion**. By combining cutting-edge AI with accessible design, we're putting the power of a chartered accountant in the hands of 1.7 billion unbanked people worldwide.
 
-**AI for Good. Finance for All. NovaLedger AI.**
+**AI for Good. Finance for All. Finance OS.**
 
 ---
 

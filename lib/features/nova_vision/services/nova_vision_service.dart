@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
 
 final visionNovaServiceProvider = Provider((ref) => VisionNovaService(
       novaService: ref.read(novaServiceV3Provider),

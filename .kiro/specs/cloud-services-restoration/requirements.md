@@ -1,7 +1,7 @@
 # Cloud Services Restoration - Requirements
 
 ## Overview
-Restore cloud AI and backend services to NovaLedger AI after they were previously removed and converted to mock implementations. This includes Nova 3 Pro AI integration and AWS Amplify services.
+Restore cloud AI and backend services to Finance OS after they were previously removed and converted to mock implementations. This includes Nova 3 Pro AI integration and AWS Amplify services.
 
 ## Background
 The app previously had all cloud services (Google AI/Nova and AWS Amplify) removed and converted to mock implementations for local-only operation. Recent changes show the Nova service being restored with real API integration, indicating a need to properly restore cloud functionality.

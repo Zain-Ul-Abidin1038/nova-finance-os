@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
 
 /// Circular Nova Logo with optional neon glow effect
 /// Used in auth screen, chat welcome, and message avatars

@@ -166,7 +166,7 @@ class NovaServiceV2 {
       "required": ["vendor", "total", "deductibleAmount"]
     };
 
-    String systemInstruction = '''You are NovaLedger AI AI specialized in receipt analysis.
+    String systemInstruction = '''You are Finance OS AI specialized in receipt analysis.
 
 <tax_rules_2026>
 - Business meals: 50% deductible

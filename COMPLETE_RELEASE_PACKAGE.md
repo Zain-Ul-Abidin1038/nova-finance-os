@@ -1,4 +1,4 @@
-# 🎉 NovaLedger AI v1.0.0 - Complete Release Package
+# 🎉 Finance OS v1.0.0 - Complete Release Package
 
 **Release Date:** February 10, 2026  
 **Version:** 1.0.0 (Build 1)  
@@ -59,17 +59,17 @@
    ```bash
    git init
    git add .
-   git commit -m "🎉 NovaLedger AI v1.0.0 - Initial Release"
+   git commit -m "🎉 Finance OS v1.0.0 - Initial Release"
    git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/nova_ledger_ai.git
+   git remote add origin https://github.com/YOUR_USERNAME/nova_finance_os.git
    git push -u origin main
    ```
 
 2. **Create Release on GitHub:**
-   - Go to: `https://github.com/YOUR_USERNAME/nova_ledger_ai`
+   - Go to: `https://github.com/YOUR_USERNAME/nova_finance_os`
    - Click **Releases** → **Draft a new release**
    - Tag: `v1.0.0`
-   - Title: `NovaLedger AI v1.0.0 - AI-Powered Financial Life OS`
+   - Title: `Finance OS v1.0.0 - AI-Powered Financial Life OS`
    - Copy description from `GITHUB_RELEASE.md`
    - Upload files:
      - `release/nova-accountant-v1.0.0-android.apk`
@@ -261,7 +261,7 @@ See **PUSH_TO_GITHUB.md** for complete step-by-step instructions.
 - Copy the key
 
 ### 3. Configure App
-- Open NovaLedger AI
+- Open Finance OS
 - Go to Settings → API Configuration
 - Paste Nova API key
 - Save and restart app
@@ -280,8 +280,8 @@ See **PUSH_TO_GITHUB.md** for complete step-by-step instructions.
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/nova_ledger_ai.git
-cd nova_ledger_ai
+git clone https://github.com/YOUR_USERNAME/nova_finance_os.git
+cd nova_finance_os
 ```
 
 ### 2. Install Dependencies
@@ -408,11 +408,11 @@ Special thanks to all contributors and early testers!
 
 ---
 
-## 🏆 What Makes NovaLedger AI Special
+## 🏆 What Makes Finance OS Special
 
 ### World's First Financial Life OS
 
-NovaLedger AI is not just an expense tracker—it's a complete **Financial Life Operating System** that:
+Finance OS is not just an expense tracker—it's a complete **Financial Life Operating System** that:
 
 1. **Understands** - Comprehensive financial intelligence with 50+ AI systems
 2. **Predicts** - 30-day cashflow forecasting and life event detection
@@ -502,7 +502,7 @@ NovaLedger AI is not just an expense tracker—it's a complete **Financial Life 
    # See PUSH_TO_GITHUB.md for complete commands
    git init
    git add .
-   git commit -m "🎉 NovaLedger AI v1.0.0 - Initial Release"
+   git commit -m "🎉 Finance OS v1.0.0 - Initial Release"
    git push -u origin main
    ```
 
@@ -557,7 +557,7 @@ NovaLedger AI is not just an expense tracker—it's a complete **Financial Life 
 
 ## 🎯 Final Words
 
-**NovaLedger AI v1.0.0** represents months of development, 50+ AI systems, and a vision to transform personal finance management through artificial intelligence.
+**Finance OS v1.0.0** represents months of development, 50+ AI systems, and a vision to transform personal finance management through artificial intelligence.
 
 This is not just an app release—it's the launch of the world's first **Financial Life Operating System**.
 

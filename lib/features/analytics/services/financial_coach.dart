@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/financial_snapshot.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/coach_action.dart';
-import 'package:nova_ledger_ai/features/analytics/services/financial_insights_engine.dart';
-import 'package:nova_ledger_ai/features/analytics/services/anomaly_detector.dart';
+import 'package:nova_finance_os/features/analytics/domain/financial_snapshot.dart';
+import 'package:nova_finance_os/features/analytics/domain/coach_action.dart';
+import 'package:nova_finance_os/features/analytics/services/financial_insights_engine.dart';
+import 'package:nova_finance_os/features/analytics/services/anomaly_detector.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

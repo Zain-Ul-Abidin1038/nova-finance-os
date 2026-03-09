@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_live_nova_ledger_ai/features/real_estate/domain/property.dart';
+import 'package:nova_live_nova_finance_os/features/real_estate/domain/property.dart';
 
 final propertyServiceProvider = Provider((ref) => PropertyService());
 

@@ -5,24 +5,24 @@ import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:nova_ledger_ai/app.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
-import 'package:nova_ledger_ai/features/finance/domain/transaction_model.dart';
-import 'package:nova_ledger_ai/amplifyconfiguration.dart';
+import 'package:nova_finance_os/app.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/finance/domain/transaction_model.dart';
+import 'package:nova_finance_os/amplifyconfiguration.dart';
 
 void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
     
-    safePrint('🚀 Initializing NovaLedger AI with Nova API (GCP) + AWS');
+    safePrint('🚀 Initializing Finance OS with Amazon Nova (AWS Bedrock)');
 
-    // Load environment variables for Nova API key
+    // Load environment variables for AWS credentials
     try {
       await dotenv.load(fileName: ".env");
-      safePrint('✓ Environment variables loaded (Nova API key)');
+      safePrint('✓ Environment variables loaded (AWS credentials)');
     } catch (e) {
       safePrint('⚠️ Could not load .env file: $e');
-      safePrint('Make sure .env file exists with GEMINI_API_KEY');
+      safePrint('Make sure .env file exists with AWS credentials');
     }
 
     // Initialize Hive for local persistence (Speed Layer)

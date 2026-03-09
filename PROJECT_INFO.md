@@ -1,16 +1,16 @@
-# Nova Live NovaLedger AI - Project Information
+# Nova Live Finance OS - Project Information
 
 ## 📋 Project Details
 
-**Project Name:** Nova Live NovaLedger AI  
+**Project Name:** Nova Live Finance OS  
 **Version:** 4.1.0 (Grounded Intelligence Edition)  
-**Package Name:** `nova_live_nova_ledger_ai`  
+**Package Name:** `nova_live_nova_finance_os`  
 **Created:** March 5, 2026  
 **License:** MIT  
 
 ## 🎯 Project Description
 
-Nova Live NovaLedger AI is a revolutionary AI-powered financial assistant that transforms personal and business finance management into an autonomous, proactive, AI-driven experience with live grounded intelligence. It's a complete Financial Life Operating System that understands, predicts, recommends, executes financial decisions safely, and provides factual answers with real-time citations.
+Nova Live Finance OS is a revolutionary AI-powered financial assistant that transforms personal and business finance management into an autonomous, proactive, AI-driven experience with live grounded intelligence. It's a complete Financial Life Operating System that understands, predicts, recommends, executes financial decisions safely, and provides factual answers with real-time citations.
 
 ## 🌟 Key Highlights
 
@@ -32,7 +32,7 @@ Nova Live NovaLedger AI is a revolutionary AI-powered financial assistant that t
 ## 📁 Project Structure
 
 ```
-nova_live_nova_ledger_ai/
+nova_live_nova_finance_os/
 ├── lib/
 │   ├── main.dart                    # App entry point
 │   ├── app.dart                     # Root widget

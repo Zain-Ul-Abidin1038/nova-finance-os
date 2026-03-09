@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/tax_plan.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/analytics/domain/tax_plan.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 
 final taxOptimizerProvider = Provider((ref) => TaxOptimizer(

@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/analytics/services/financial_coach.dart';
-import 'package:nova_ledger_ai/features/analytics/services/cashflow_predictor.dart';
-import 'package:nova_ledger_ai/features/analytics/services/tax_optimizer.dart';
-import 'package:nova_ledger_ai/features/analytics/services/financial_health_engine.dart';
-import 'package:nova_ledger_ai/features/analytics/services/anomaly_detector.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/user_financial_profile.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/brain_state.dart';
+import 'package:nova_finance_os/features/analytics/services/financial_coach.dart';
+import 'package:nova_finance_os/features/analytics/services/cashflow_predictor.dart';
+import 'package:nova_finance_os/features/analytics/services/tax_optimizer.dart';
+import 'package:nova_finance_os/features/analytics/services/financial_health_engine.dart';
+import 'package:nova_finance_os/features/analytics/services/anomaly_detector.dart';
+import 'package:nova_finance_os/features/analytics/domain/user_financial_profile.dart';
+import 'package:nova_finance_os/features/analytics/domain/brain_state.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 
 final financialBrainProvider = Provider((ref) => FinancialBrain(

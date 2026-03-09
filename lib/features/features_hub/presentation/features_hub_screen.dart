@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/glass_widgets.dart';
+import 'package:nova_live_nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_live_nova_finance_os/core/theme/glass_widgets.dart';
 
 class FeaturesHubScreen extends StatelessWidget {
   const FeaturesHubScreen({super.key});

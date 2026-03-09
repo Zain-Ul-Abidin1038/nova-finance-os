@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/app.dart';
+import 'package:nova_finance_os/app.dart';
 
 void main() {
   testWidgets('App loads successfully', (WidgetTester tester) async {
@@ -11,7 +11,7 @@ void main() {
     // Verify that the app loads
     await tester.pumpAndSettle();
     
-    // Check for NovaLedger AI title
-    expect(find.text('NovaLedger AI'), findsOneWidget);
+    // Check for Finance OS title
+    expect(find.text('Finance OS'), findsOneWidget);
   });
 }

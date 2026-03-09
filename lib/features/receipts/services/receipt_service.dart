@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
-import 'package:nova_ledger_ai/features/trace/services/nova_trace_service.dart';
-import 'package:nova_ledger_ai/core/services/nova_service.dart';
-import 'package:nova_ledger_ai/core/services/aws_memory_service.dart';
-import 'package:nova_ledger_ai/core/services/audit_vault_service.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/trace/services/nova_trace_service.dart';
+import 'package:nova_finance_os/core/services/nova_service.dart';
+import 'package:nova_finance_os/core/services/aws_memory_service.dart';
+import 'package:nova_finance_os/core/services/audit_vault_service.dart';
 import 'package:geolocator/geolocator.dart';
 
 final receiptServiceProvider = Provider((ref) => ReceiptService(ref));

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_live_nova_ledger_ai/features/advisors/domain/advisor.dart';
-import 'package:nova_live_nova_ledger_ai/features/advisors/services/advisor_service.dart';
+import 'package:nova_live_nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_live_nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_live_nova_finance_os/features/advisors/domain/advisor.dart';
+import 'package:nova_live_nova_finance_os/features/advisors/services/advisor_service.dart';
 import 'package:intl/intl.dart';
 
 class AdvisorMarketplaceScreen extends ConsumerStatefulWidget {

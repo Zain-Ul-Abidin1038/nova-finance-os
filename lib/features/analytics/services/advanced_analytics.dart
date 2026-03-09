@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/financial_snapshot.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/user_financial_profile.dart';
+import 'package:nova_finance_os/features/analytics/domain/financial_snapshot.dart';
+import 'package:nova_finance_os/features/analytics/domain/user_financial_profile.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

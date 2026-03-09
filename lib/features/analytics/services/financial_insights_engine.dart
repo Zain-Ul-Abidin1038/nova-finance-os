@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
-import 'package:nova_ledger_ai/features/analytics/domain/financial_snapshot.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/features/analytics/domain/financial_snapshot.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 
 final financialInsightsEngineProvider = Provider((ref) => FinancialInsightsEngine(
@@ -41,7 +41,7 @@ Example: "💰 You're spending 40% on food - consider meal planning to save \$20
     try {
       final response = await nova.sendMessage(
         prompt: prompt,
-        systemInstruction: '''You are NovaLedger AI's financial analyst.
+        systemInstruction: '''You are Finance OS's financial analyst.
 
 Provide insights that are:
 - Specific and actionable

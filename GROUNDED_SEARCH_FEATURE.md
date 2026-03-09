@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Grounded Search feature enables NovaLedger AI to provide factual, verifiable answers by searching the web or specific document datastores in real-time. This ensures users get accurate, up-to-date information with proper citations.
+The Grounded Search feature enables Finance OS to provide factual, verifiable answers by searching the web or specific document datastores in real-time. This ensures users get accurate, up-to-date information with proper citations.
 
 ## Architecture
 

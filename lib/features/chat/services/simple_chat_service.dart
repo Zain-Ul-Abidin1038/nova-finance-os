@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
-import 'package:nova_ledger_ai/features/finance/services/ai_finance_parser.dart';
-import 'package:nova_ledger_ai/features/finance/services/unified_finance_service.dart';
-import 'package:nova_ledger_ai/features/finance/domain/expense_entry.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/features/finance/services/ai_finance_parser.dart';
+import 'package:nova_finance_os/features/finance/services/unified_finance_service.dart';
+import 'package:nova_finance_os/features/finance/domain/expense_entry.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'dart:io';
 import 'dart:convert';
@@ -201,11 +201,11 @@ Net Worth: ₹${summary['netWorth']}
 ${_conversationHistory.map((m) => '${m['role']}: ${m['content']}').join('\n')}
 </conversation_history>
 
-Respond as NovaLedger AI, a helpful financial AI assistant. Be conversational, ask clarifying questions when needed, and provide actionable insights.''';
+Respond as Finance OS, a helpful financial AI assistant. Be conversational, ask clarifying questions when needed, and provide actionable insights.''';
 
       final response = await novaService.sendMessage(
         prompt: contextPrompt,
-        systemInstruction: '''You are NovaLedger AI, an intelligent financial AI assistant.
+        systemInstruction: '''You are Finance OS, an intelligent financial AI assistant.
 
 Key behaviors:
 1. Ask clarifying questions when information is incomplete
@@ -237,7 +237,7 @@ Examples:
     } catch (e) {
       return {
         'success': true,
-        'message': 'Hello! I\'m NovaLedger AI. I can help you track expenses, manage loans, and provide financial insights. What would you like to do?',
+        'message': 'Hello! I\'m Finance OS. I can help you track expenses, manage loans, and provide financial insights. What would you like to do?',
         'thoughtSignature': '',
       };
     }

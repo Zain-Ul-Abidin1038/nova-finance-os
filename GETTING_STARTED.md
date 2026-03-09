@@ -1,6 +1,6 @@
-# Getting Started with Nova Live NovaLedger AI
+# Getting Started with Nova Live Finance OS
 
-Welcome to **Nova Live NovaLedger AI** - your AI-powered financial life operating system with grounded intelligence!
+Welcome to **Nova Live Finance OS** - your AI-powered financial life operating system with grounded intelligence!
 
 ## 🚀 Quick Start
 
@@ -28,7 +28,7 @@ Welcome to **Nova Live NovaLedger AI** - your AI-powered financial life operatin
 #### 1. Clone or Download
 ```bash
 # If you have the project locally, navigate to it
-cd nova_live_nova_ledger_ai
+cd nova_live_nova_finance_os
 ```
 
 #### 2. Install Dependencies
@@ -205,7 +205,7 @@ amplify push
 
 ## 🎉 You're Ready!
 
-Start exploring Nova Live NovaLedger AI and experience the future of AI-powered financial management!
+Start exploring Nova Live Finance OS and experience the future of AI-powered financial management!
 
 ---
 

@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_ledger_ai/features/finance/services/unified_finance_service.dart';
-import 'package:nova_ledger_ai/features/finance/domain/income_entry.dart';
-import 'package:nova_ledger_ai/features/finance/domain/expense_entry.dart';
-import 'package:nova_ledger_ai/features/finance/domain/ledger_entry.dart';
+import 'package:nova_finance_os/features/finance/services/unified_finance_service.dart';
+import 'package:nova_finance_os/features/finance/domain/income_entry.dart';
+import 'package:nova_finance_os/features/finance/domain/expense_entry.dart';
+import 'package:nova_finance_os/features/finance/domain/ledger_entry.dart';
 
 final aiFinanceParserProvider = Provider((ref) => AIFinanceParser(
       novaService: ref.read(novaServiceV3Provider),
@@ -164,7 +164,7 @@ class AIFinanceParser {
       // Use Nova V3 for conversational response (auto-selects Flash)
       final response = await novaService.sendMessage(
         prompt: originalMessage,
-        systemInstruction: '''You are NovaLedger AI, a friendly AI financial assistant.
+        systemInstruction: '''You are Finance OS, a friendly AI financial assistant.
 
 When users greet you or have general conversation:
 - Respond warmly and professionally
@@ -173,7 +173,7 @@ When users greet you or have general conversation:
 - Keep responses concise (2-3 sentences)
 
 Examples:
-- "hi" → "Hello! I'm NovaLedger AI, your AI financial assistant. I can help you track expenses, scan receipts, manage loans, and provide financial insights. How can I assist you today?"
+- "hi" → "Hello! I'm Finance OS, your AI financial assistant. I can help you track expenses, scan receipts, manage loans, and provide financial insights. How can I assist you today?"
 - "how are you" → "I'm doing great, thank you! Ready to help you manage your finances. Would you like to log an expense, check your balance, or analyze a receipt?"
 - "what can you do" → "I can help you track expenses, scan and analyze receipts with AI, manage IOUs, calculate tax deductions, and provide financial insights. Just tell me what you spent or ask about your finances!"
 
@@ -194,7 +194,7 @@ For financial commands, users can say things like:
     } catch (e) {
       return {
         'success': true,
-        'message': 'Hello! I\'m NovaLedger AI, your AI financial assistant. I can help you track expenses, scan receipts, and manage your finances. Try saying "I spent \$50 on lunch" or "show my balance".',
+        'message': 'Hello! I\'m Finance OS, your AI financial assistant. I can help you track expenses, scan receipts, and manage your finances. Try saying "I spent \$50 on lunch" or "show my balance".',
         'thoughtSignature': '',
       };
     }

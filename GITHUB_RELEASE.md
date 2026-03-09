@@ -40,12 +40,12 @@ shasum -a 256 nova-accountant-v1.0.0-android.apk > checksums.txt
 
 **Tag version:** `v1.0.0`
 
-**Release title:** `NovaLedger AI v1.0.0 - AI-Powered Financial Life OS`
+**Release title:** `Finance OS v1.0.0 - AI-Powered Financial Life OS`
 
 **Description:**
 
 ```markdown
-# 🎉 NovaLedger AI v1.0.0 - First Production Release
+# 🎉 Finance OS v1.0.0 - First Production Release
 
 The world's first **AI-Powered Financial Life Operating System** is here!
 
@@ -151,8 +151,8 @@ Built with:
 ## 📞 Support
 
 - **Documentation:** Check repository docs
-- **Issues:** [GitHub Issues](https://github.com/your-org/nova_ledger_ai/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/your-org/nova_ledger_ai/discussions)
+- **Issues:** [GitHub Issues](https://github.com/your-org/nova_finance_os/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/your-org/nova_finance_os/discussions)
 - **Email:** support@novaaccountant.com
 
 ---
@@ -192,14 +192,14 @@ Click **Publish release**
 Add release badge to README.md:
 
 ```markdown
-[![Release](https://img.shields.io/github/v/release/your-org/nova_ledger_ai)](https://github.com/your-org/nova_ledger_ai/releases)
+[![Release](https://img.shields.io/github/v/release/your-org/nova_finance_os)](https://github.com/your-org/nova_finance_os/releases)
 ```
 
 ### 2. Announce Release
 
 #### GitHub Discussions
 Create announcement post:
-- Title: "🎉 NovaLedger AI v1.0.0 Released!"
+- Title: "🎉 Finance OS v1.0.0 Released!"
 - Category: Announcements
 - Content: Link to release notes and highlights
 

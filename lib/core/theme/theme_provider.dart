@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 // Theme mode provider with persistence

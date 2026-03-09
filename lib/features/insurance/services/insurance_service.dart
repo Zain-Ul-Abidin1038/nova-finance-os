@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_live_nova_ledger_ai/features/insurance/domain/policy.dart';
+import 'package:nova_live_nova_finance_os/features/insurance/domain/policy.dart';
 
 final insuranceServiceProvider = Provider((ref) => InsuranceService());
 

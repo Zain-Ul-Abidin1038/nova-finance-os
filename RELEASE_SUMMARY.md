@@ -1,4 +1,4 @@
-# 🎉 NovaLedger AI v1.0.0 - Release Summary
+# 🎉 Finance OS v1.0.0 - Release Summary
 
 **Date:** February 10, 2026  
 **Status:** ✅ Ready for GitHub Release
@@ -87,7 +87,7 @@ sha256sum nova-accountant-v1.0.0-android.apk
 1. Go to GitHub repository
 2. Click **Releases** → **Draft a new release**
 3. Set tag: `v1.0.0`
-4. Set title: `NovaLedger AI v1.0.0 - AI-Powered Financial Life OS`
+4. Set title: `Finance OS v1.0.0 - AI-Powered Financial Life OS`
 5. Copy description from `GITHUB_RELEASE.md`
 
 ### Step 2: Upload Assets
@@ -340,7 +340,7 @@ Upload these files to the release:
 
 ## 🏆 What Makes This Special
 
-NovaLedger AI is unique because it:
+Finance OS is unique because it:
 
 1. **Understands** - Comprehensive financial intelligence
 2. **Predicts** - 30-day cashflow forecasting

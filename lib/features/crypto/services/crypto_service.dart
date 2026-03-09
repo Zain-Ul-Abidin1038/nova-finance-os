@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_live_nova_ledger_ai/features/crypto/domain/crypto_asset.dart';
+import 'package:nova_live_nova_finance_os/features/crypto/domain/crypto_asset.dart';
 
 final cryptoServiceProvider = Provider((ref) => CryptoService());
 

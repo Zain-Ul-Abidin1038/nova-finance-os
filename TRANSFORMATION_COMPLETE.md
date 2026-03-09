@@ -1,4 +1,4 @@
-# NovaLedger AI Transformation Complete ✅
+# Finance OS Transformation Complete ✅
 
 ## Project Successfully Transformed for Amazon Nova AI Hackathon
 
@@ -6,7 +6,7 @@
 
 ## Summary
 
-The Nova Accountant project has been successfully transformed into **NovaLedger AI**, a completely new repository designed specifically for the Amazon Nova AI Hackathon.
+The Nova Accountant project has been successfully transformed into **Finance OS**, a completely new repository designed specifically for the Amazon Nova AI Hackathon.
 
 ---
 
@@ -14,7 +14,7 @@ The Nova Accountant project has been successfully transformed into **NovaLedger 
 
 ### ✅ Step 1: Repository Cloning
 - Cloned original Nova Accountant repository
-- Created new project directory: `nova_ledger_ai`
+- Created new project directory: `nova_finance_os`
 - Copied all source code to new location
 
 ### ✅ Step 2: Git History Removal
@@ -26,8 +26,8 @@ The Nova Accountant project has been successfully transformed into **NovaLedger 
 
 ### ✅ Step 3: Global Renaming
 Successfully renamed all occurrences:
-- `Nova Accountant` → `NovaLedger AI`
-- `nova_accountant` → `nova_ledger_ai`
+- `Nova Accountant` → `Finance OS`
+- `nova_accountant` → `nova_finance_os`
 - `NovaAgent` → `NovaAgent`
 - `NovaTrace` → `NovaTrace`
 - `Nova Navigator` → `NovaNavigator`
@@ -136,7 +136,7 @@ Successfully renamed all occurrences:
 
 ### ✅ Step 7: Configuration Updates
 - Updated `pubspec.yaml`:
-  - Package name: `nova_ledger_ai`
+  - Package name: `nova_finance_os`
   - Description: Amazon Nova powered
   - Version: `1.0.0+1`
 - Updated `main.dart`:
@@ -155,7 +155,7 @@ Successfully renamed all occurrences:
 ## Project Structure
 
 ```
-nova_ledger_ai/
+nova_finance_os/
 ├── README.md                          # Main overview
 ├── ARCHITECTURE.md                    # Technical architecture
 ├── NOVA_INTEGRATION.md                # Nova integration guide
@@ -262,7 +262,7 @@ nova_ledger_ai/
 
 1. **Push to GitHub**
    ```bash
-   cd nova_ledger_ai
+   cd nova_finance_os
    git remote add origin https://github.com/YOUR-USERNAME/NovaLedger-AI.git
    git branch -M main
    git push -u origin main
@@ -352,7 +352,7 @@ nova_ledger_ai/
 
 ## Conclusion
 
-**NovaLedger AI is now a completely new, production-ready project designed specifically for the Amazon Nova AI Hackathon.**
+**Finance OS is now a completely new, production-ready project designed specifically for the Amazon Nova AI Hackathon.**
 
 The transformation is complete, and the project is ready to be published as a brand-new GitHub repository and submitted to the hackathon.
 
@@ -360,10 +360,10 @@ The transformation is complete, and the project is ready to be published as a br
 
 ## Contact & Support
 
-**Project:** NovaLedger AI  
+**Project:** Finance OS  
 **Category:** Agentic AI & Autonomous Systems  
 **Repository:** https://github.com/YOUR-USERNAME/NovaLedger-AI  
-**Email:** support@novaledger.ai
+**Email:** support@financeos.ai
 
 ---
 

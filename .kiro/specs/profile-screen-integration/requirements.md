@@ -1,7 +1,7 @@
 # Profile Screen Integration - Requirements
 
 ## Overview
-Integrate the newly created Profile Screen into the NovaLedger AI app's navigation system, ensuring it follows the glassmorphism design philosophy and provides users with account management, preferences, and app information.
+Integrate the newly created Profile Screen into the Finance OS app's navigation system, ensuring it follows the glassmorphism design philosophy and provides users with account management, preferences, and app information.
 
 ## Feature Name
 `profile-screen-integration`
@@ -9,7 +9,7 @@ Integrate the newly created Profile Screen into the NovaLedger AI app's navigati
 ## User Stories
 
 ### US-1: Access Profile from Home Screen
-**As a** NovaLedger AI user  
+**As a** Finance OS user  
 **I want to** access my profile settings from the home screen  
 **So that** I can manage my account, preferences, and view app information
 
@@ -106,7 +106,7 @@ Integrate the newly created Profile Screen into the NovaLedger AI app's navigati
 - Screen reader compatible
 
 ### NFR-3: User Experience
-- Consistent with NovaLedger AI's premium aesthetic
+- Consistent with Finance OS's premium aesthetic
 - Intuitive navigation patterns
 - Clear visual hierarchy
 - Responsive to user interactions

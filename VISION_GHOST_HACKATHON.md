@@ -2,7 +2,7 @@
 
 ## 🎯 The Game-Changing Feature
 
-**Vision Nova** is NovaLedger AI's revolutionary live AI agent that transforms your smartphone camera into a real-time financial advisor. Point your camera at any receipt, bill, or product, and get instant professional advice - just like having a chartered accountant looking over your shoulder 24/7.
+**Vision Nova** is Finance OS's revolutionary live AI agent that transforms your smartphone camera into a real-time financial advisor. Point your camera at any receipt, bill, or product, and get instant professional advice - just like having a chartered accountant looking over your shoulder 24/7.
 
 ---
 
@@ -468,6 +468,6 @@ financial empowerment accessible to everyone."
 **Vision Nova: Your AI Financial Guardian, Always Watching, Always Advising** 👻💰
 
 **Built for: AI for Good Hackathon 2026**
-**Team: NovaLedger AI**
+**Team: Finance OS**
 **Status: Production Ready** ✅
 

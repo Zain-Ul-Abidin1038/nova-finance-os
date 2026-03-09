@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_ledger_ai/features/trace/services/nova_trace_service.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_finance_os/features/trace/services/nova_trace_service.dart';
 
 class EnhancedVoiceScreen extends ConsumerStatefulWidget {
   const EnhancedVoiceScreen({super.key});

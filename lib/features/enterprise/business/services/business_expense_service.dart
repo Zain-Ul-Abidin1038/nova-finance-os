@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_live_nova_ledger_ai/features/enterprise/business/domain/business_expense.dart';
+import 'package:nova_live_nova_finance_os/features/enterprise/business/domain/business_expense.dart';
 
 final businessExpenseServiceProvider = Provider((ref) => BusinessExpenseService());
 

@@ -1,4 +1,4 @@
-# NovaLedger AI: The Story Behind the AI Financial Life OS
+# Finance OS: The Story Behind the AI Financial Life OS
 
 ## 💡 The Spark of Inspiration
 
@@ -12,7 +12,7 @@ Then Google announced Nova 3, and everything clicked.
 
 What if I could build an AI that didn't just track expenses, but **reasoned** about them? An AI that could look at a receipt photo and instantly know that meals are 50% deductible while alcohol isn't? An AI that could predict my cashflow 30 days ahead and automatically adjust my budget when I'm overspending?
 
-**NovaLedger AI was born from a simple question:** *What if your accountant was an AI that never slept, learned from every transaction, and got smarter every day?*
+**Finance OS was born from a simple question:** *What if your accountant was an AI that never slept, learned from every transaction, and got smarter every day?*
 
 ---
 
@@ -29,7 +29,7 @@ I wanted to build something fundamentally different—a **Financial Life Operati
 5. **Learns** from your behavior and gets smarter over time
 6. **Explains** its reasoning transparently (Nova Trace)
 
-The name "NovaLedger AI" captures this perfectly—an invisible, intelligent presence that handles your finances in the background, only surfacing when you need it or when something requires your attention.
+The name "Finance OS" captures this perfectly—an invisible, intelligent presence that handles your finances in the background, only surfacing when you need it or when something requires your attention.
 
 ---
 
@@ -185,7 +185,7 @@ Every 6-12 hours:
 10. Repeat ♻️
 ```
 
-This loop runs continuously in the background, making NovaLedger AI feel **alive and intelligent**.
+This loop runs continuously in the background, making Finance OS feel **alive and intelligent**.
 
 ---
 
@@ -389,7 +389,7 @@ final schema = {
 
 ---
 
-## 🚀 The Future: Where NovaLedger AI Goes Next
+## 🚀 The Future: Where Finance OS Goes Next
 
 ### Phase 1: Enhanced Intelligence (Q2 2026)
 - Multi-currency support
@@ -414,7 +414,7 @@ final schema = {
 
 ### The Long-Term Vision
 
-NovaLedger AI will evolve into a **complete financial life companion** that:
+Finance OS will evolve into a **complete financial life companion** that:
 - Manages your entire financial life autonomously
 - Predicts major life events (home purchase, career change)
 - Optimizes wealth across all asset classes
@@ -444,7 +444,7 @@ NovaLedger AI will evolve into a **complete financial life companion** that:
 ### For Me
 This project taught me that **AI isn't just about calling APIs—it's about building intelligent systems that understand, predict, and act**.
 
-NovaLedger AI is my proof that we can build AI that:
+Finance OS is my proof that we can build AI that:
 - ✅ Works reliably in production
 - ✅ Costs pennies per user
 - ✅ Operates autonomously and safely
@@ -467,7 +467,7 @@ This project wouldn't exist without:
 
 ## 💭 Final Thoughts
 
-Building NovaLedger AI has been the most challenging and rewarding project of my career. It pushed me to:
+Building Finance OS has been the most challenging and rewarding project of my career. It pushed me to:
 - Master production AI engineering
 - Design complex system architectures
 - Build beautiful user experiences
@@ -477,7 +477,7 @@ But more importantly, it showed me the **future of software**:
 
 **Apps won't just respond to commands—they'll understand context, predict needs, and act autonomously. They'll be intelligent companions that make our lives better.**
 
-NovaLedger AI is my first step into that future.
+Finance OS is my first step into that future.
 
 ---
 
@@ -492,4 +492,4 @@ NovaLedger AI is my first step into that future.
 
 *"The best way to predict the future is to build it."* - Alan Kay
 
-**NovaLedger AI: Your AI-Powered Financial Life OS** 🚀👻
+**Finance OS: Your AI-Powered Financial Life OS** 🚀👻

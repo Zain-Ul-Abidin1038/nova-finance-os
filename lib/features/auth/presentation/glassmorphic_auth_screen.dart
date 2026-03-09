@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_ledger_ai/core/theme/theme_provider.dart';
-import 'package:nova_ledger_ai/core/presentation/widgets/nova_logo.dart';
-import 'package:nova_ledger_ai/features/auth/services/auth_service.dart';
+import 'package:nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_finance_os/core/theme/theme_provider.dart';
+import 'package:nova_finance_os/core/presentation/widgets/nova_logo.dart';
+import 'package:nova_finance_os/features/auth/services/auth_service.dart';
 
 class GlassmorphicAuthScreen extends ConsumerStatefulWidget {
   const GlassmorphicAuthScreen({super.key});
@@ -125,7 +125,7 @@ class _GlassmorphicAuthScreenState extends ConsumerState<GlassmorphicAuthScreen>
                           const NovaLogo(size: 120, showGlow: true),
                           const SizedBox(height: 24),
                           Text(
-                            'NovaLedger AI',
+                            'Finance OS',
                             style: TextStyle(
                               color: textColor,
                               fontSize: 32,

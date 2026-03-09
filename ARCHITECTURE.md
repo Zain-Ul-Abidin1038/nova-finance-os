@@ -1,4 +1,4 @@
-# NovaLedger AI Architecture
+# Finance OS Architecture
 
 ## Amazon Nova AI Hackathon Project
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-NovaLedger AI is built on a modern, cloud-native architecture that leverages the full power of Amazon Nova AI services through AWS Bedrock. The system is designed for scalability, security, and autonomous operation.
+Finance OS is built on a modern, cloud-native architecture that leverages the full power of Amazon Nova AI services through AWS Bedrock. The system is designed for scalability, security, and autonomous operation.
 
 ---
 
@@ -280,7 +280,7 @@ REPEAT ♻️
 
 **Structure:**
 ```
-s3://novaledger-audit-vault/
+s3://financeos-audit-vault/
 ├── private/{userId}/
 │   ├── receipts/
 │   │   ├── {receiptId}/

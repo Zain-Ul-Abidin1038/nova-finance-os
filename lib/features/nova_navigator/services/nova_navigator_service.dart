@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
-import 'package:nova_ledger_ai/features/nova_navigator/domain/navigation_task.dart';
-import 'package:nova_ledger_ai/features/finance/services/unified_finance_service.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/features/nova_navigator/domain/navigation_task.dart';
+import 'package:nova_finance_os/features/finance/services/unified_finance_service.dart';
 
 final novaNavigatorServiceProvider = Provider((ref) => NovaNavigatorService(
       novaService: ref.read(novaServiceV3Provider),

@@ -1,8 +1,8 @@
-# NovaLedger AI - Amazon Nova AI Hackathon Submission
+# Finance OS - Amazon Nova AI Hackathon Submission
 
 ## Project Information
 
-**Project Name:** NovaLedger AI  
+**Project Name:** Finance OS  
 **Tagline:** An Autonomous Financial Life Operating System powered by Amazon Nova  
 **Category:** Agentic AI & Autonomous Systems  
 **Team:** Solo Developer  
@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-NovaLedger AI is a revolutionary AI-powered financial operating system that transforms personal and business finance management from a manual, reactive process into an autonomous, proactive, AI-driven experience. Built specifically for the Amazon Nova AI Hackathon, it demonstrates the full power of Amazon Nova's reasoning models, multimodal embeddings, and intelligent agents.
+Finance OS is a revolutionary AI-powered financial operating system that transforms personal and business finance management from a manual, reactive process into an autonomous, proactive, AI-driven experience. Built specifically for the Amazon Nova AI Hackathon, it demonstrates the full power of Amazon Nova's reasoning models, multimodal embeddings, and intelligent agents.
 
 ---
 
@@ -31,7 +31,7 @@ Traditional financial management tools are:
 
 ## Solution
 
-NovaLedger AI is an **Autonomous Financial Life Operating System** that:
+Finance OS is an **Autonomous Financial Life Operating System** that:
 
 1. **Understands** - Nova Lite reasoning comprehends financial context
 2. **Predicts** - AI forecasting predicts cashflow 30 days ahead
@@ -429,7 +429,7 @@ flutter run
 
 ## Conclusion
 
-NovaLedger AI demonstrates the transformative power of Amazon Nova AI services. By combining Nova Lite's reasoning, Nova Pro's multimodal capabilities, and Titan's embeddings, we've created a truly autonomous financial operating system that learns, predicts, and acts on behalf of users.
+Finance OS demonstrates the transformative power of Amazon Nova AI services. By combining Nova Lite's reasoning, Nova Pro's multimodal capabilities, and Titan's embeddings, we've created a truly autonomous financial operating system that learns, predicts, and acts on behalf of users.
 
 This is not just an app—it's a glimpse into the future of AI-powered financial management.
 
@@ -438,11 +438,11 @@ This is not just an app—it's a glimpse into the future of AI-powered financial
 ## Contact
 
 **Project Repository:** https://github.com/your-org/NovaLedger-AI  
-**Email:** support@novaledger.ai  
+**Email:** support@financeos.ai  
 **Demo:** [Link to live demo]
 
 ---
 
 **Built with ❤️ for the Amazon Nova AI Hackathon**
 
-**Thank you for considering NovaLedger AI! 🚀**
+**Thank you for considering Finance OS! 🚀**

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'dart:math';
 
@@ -118,7 +118,7 @@ Explain in one sentence why this might be unusual and if it's concerning.''';
     try {
       final response = await nova.sendMessage(
         prompt: prompt,
-        systemInstruction: '''You are NovaLedger AI's anomaly analyst.
+        systemInstruction: '''You are Finance OS's anomaly analyst.
 
 Explain anomalies in a helpful, non-alarming way:
 - Acknowledge the unusual amount

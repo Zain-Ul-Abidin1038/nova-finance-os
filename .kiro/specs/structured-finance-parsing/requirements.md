@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The Structured Finance Parsing system enhances the NovaLedger AI app's AI-powered natural language processing by implementing schema-based JSON parsing for financial commands. This system replaces unreliable text-based JSON extraction with structured response schemas, ensuring consistent and accurate parsing of user financial inputs.
+The Structured Finance Parsing system enhances the Finance OS app's AI-powered natural language processing by implementing schema-based JSON parsing for financial commands. This system replaces unreliable text-based JSON extraction with structured response schemas, ensuring consistent and accurate parsing of user financial inputs.
 
 ## Glossary
 
-- **System**: The Structured Finance Parsing system within NovaLedger AI
+- **System**: The Structured Finance Parsing system within Finance OS
 - **AI_Parser**: The AIFinanceParser component that processes natural language financial commands
 - **Nova_Service**: The NovaServiceV3 that communicates with Google's Nova AI API
 - **Finance_Command**: A structured data object representing a parsed financial action

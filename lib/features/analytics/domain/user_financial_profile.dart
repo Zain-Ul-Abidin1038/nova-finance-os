@@ -1,6 +1,6 @@
-import 'package:nova_ledger_ai/features/analytics/domain/financial_snapshot.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
-import 'package:nova_ledger_ai/features/analytics/services/cashflow_predictor.dart';
+import 'package:nova_finance_os/features/analytics/domain/financial_snapshot.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/analytics/services/cashflow_predictor.dart';
 
 /// User Financial Profile
 /// Complete financial data for AI analysis

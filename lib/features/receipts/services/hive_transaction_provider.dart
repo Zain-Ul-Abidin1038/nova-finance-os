@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
 
 // Transaction state that holds all receipts
 class TransactionState {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/app_colors.dart';
-import 'package:nova_live_nova_ledger_ai/core/theme/glass_widgets.dart';
-import 'package:nova_live_nova_ledger_ai/features/group_expenses/services/group_expense_service.dart';
-import 'package:nova_live_nova_ledger_ai/features/group_expenses/domain/group_expense.dart';
+import 'package:nova_live_nova_finance_os/core/theme/app_colors.dart';
+import 'package:nova_live_nova_finance_os/core/theme/glass_widgets.dart';
+import 'package:nova_live_nova_finance_os/features/group_expenses/services/group_expense_service.dart';
+import 'package:nova_live_nova_finance_os/features/group_expenses/domain/group_expense.dart';
 import 'package:uuid/uuid.dart';
 
 class GroupExpensesScreen extends ConsumerWidget {

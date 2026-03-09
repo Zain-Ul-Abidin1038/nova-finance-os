@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nova_ledger_ai/core/services/nova_service_v3.dart';
-import 'package:nova_ledger_ai/core/services/nova_validator.dart';
-import 'package:nova_ledger_ai/features/receipts/domain/receipt.dart';
-import 'package:nova_ledger_ai/features/receipts/services/receipt_repository.dart';
+import 'package:nova_finance_os/core/services/nova_service_v3.dart';
+import 'package:nova_finance_os/core/services/nova_validator.dart';
+import 'package:nova_finance_os/features/receipts/domain/receipt.dart';
+import 'package:nova_finance_os/features/receipts/services/receipt_repository.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:uuid/uuid.dart';
 

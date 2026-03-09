@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the complete implementation of advanced features (Phase 3), social features (Phase 4), and enterprise features (Phase 5) for Nova Live NovaLedger AI.
+This document outlines the complete implementation of advanced features (Phase 3), social features (Phase 4), and enterprise features (Phase 5) for Nova Live Finance OS.
 
 **Timeline:** Q2-Q4 2026  
 **Status:** 🚧 In Development  

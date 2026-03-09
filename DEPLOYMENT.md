@@ -1,8 +1,8 @@
-# 🚀 Deployment Guide - NovaLedger AI
+# 🚀 Deployment Guide - Finance OS
 
 ## Overview
 
-NovaLedger AI uses automated CI/CD pipelines with GitHub Actions for professional-grade deployment to multiple platforms.
+Finance OS uses automated CI/CD pipelines with GitHub Actions for professional-grade deployment to multiple platforms.
 
 ---
 
@@ -239,7 +239,7 @@ flutter build apk --debug
 
 After tagging, find artifacts at:
 ```
-https://github.com/YOUR_USERNAME/nova_ledger_ai/releases
+https://github.com/YOUR_USERNAME/nova_finance_os/releases
 ```
 
 Includes:
@@ -287,9 +287,9 @@ const apiKey = String.fromEnvironment('GEMINI_API_KEY');
 Add to README.md:
 
 ```markdown
-![CI](https://github.com/YOUR_USERNAME/nova_ledger_ai/workflows/CI/badge.svg)
-![Deploy Web](https://github.com/YOUR_USERNAME/nova_ledger_ai/workflows/Deploy%20Web/badge.svg)
-![Build Android](https://github.com/YOUR_USERNAME/nova_ledger_ai/workflows/Build%20Android/badge.svg)
+![CI](https://github.com/YOUR_USERNAME/nova_finance_os/workflows/CI/badge.svg)
+![Deploy Web](https://github.com/YOUR_USERNAME/nova_finance_os/workflows/Deploy%20Web/badge.svg)
+![Build Android](https://github.com/YOUR_USERNAME/nova_finance_os/workflows/Build%20Android/badge.svg)
 ```
 
 ### Firebase Analytics
@@ -499,4 +499,4 @@ flutter build apk --split-per-abi
 
 **Last Updated:** February 2026
 
-**Maintained by:** NovaLedger AI Team
+**Maintained by:** Finance OS Team
