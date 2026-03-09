@@ -350,7 +350,7 @@ The system analyzes the impact on monthly cashflow.
 - Identifies the root cause: dining overspending
 
 ### Step 3: Strategy Generation
-NovaLedger suggests optimization.
+Finance OS suggests optimization.
 
 **Multi-Agent Collaboration:**
 - Budget Agent: Reduce dining by 15%
