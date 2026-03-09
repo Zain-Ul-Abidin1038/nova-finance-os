@@ -1,24 +1,38 @@
 import 'nova_lite_service.dart';
 import 'nova_embedding_service.dart';
-import 'nova_agent_executor.dart';
 import 'nova_receipt_analyzer.dart';
 
 /// Nova AI Orchestrator
 /// Master orchestrator for all Amazon Nova AI services
-/// Replaces NovaServiceV3 with Nova-based architecture
+/// Real AWS Bedrock Integration
 class NovaAIOrchestrator {
   final NovaLiteService liteService;
   final NovaEmbeddingService embeddingService;
-  final NovaAgentExecutor agentExecutor;
   final NovaReceiptAnalyzer receiptAnalyzer;
   
   NovaAIOrchestrator({
-    required String apiKey,
+    required String accessKeyId,
+    required String secretAccessKey,
     required String region,
-  })  : liteService = NovaLiteService(apiKey: apiKey, region: region),
-        embeddingService = NovaEmbeddingService(apiKey: apiKey, region: region),
-        agentExecutor = NovaAgentExecutor(apiKey: apiKey, region: region),
-        receiptAnalyzer = NovaReceiptAnalyzer(apiKey: apiKey, region: region);
+    String? sessionToken,
+  })  : liteService = NovaLiteService(
+          accessKeyId: accessKeyId,
+          secretAccessKey: secretAccessKey,
+          region: region,
+          sessionToken: sessionToken,
+        ),
+        embeddingService = NovaEmbeddingService(
+          accessKeyId: accessKeyId,
+          secretAccessKey: secretAccessKey,
+          region: region,
+          sessionToken: sessionToken,
+        ),
+        receiptAnalyzer = NovaReceiptAnalyzer(
+          accessKeyId: accessKeyId,
+          secretAccessKey: secretAccessKey,
+          region: region,
+          sessionToken: sessionToken,
+        );
 
   /// Process financial message with context
   Future<Map<String, dynamic>> processFinancialMessage({
@@ -38,7 +52,7 @@ class NovaAIOrchestrator {
   }) async {
     return await receiptAnalyzer.analyzeReceipt(
       base64Image: base64Image,
-      region: region,
+      userRegion: region,
     );
   }
 
@@ -50,19 +64,6 @@ class NovaAIOrchestrator {
     return await embeddingService.searchFinancialKnowledge(
       query: query,
       knowledgeBase: knowledgeBase,
-    );
-  }
-
-  /// Execute autonomous task
-  Future<Map<String, dynamic>> executeAutonomousTask({
-    required String taskDescription,
-    required String taskType,
-    Map<String, dynamic>? parameters,
-  }) async {
-    return await agentExecutor.executeTask(
-      taskDescription: taskDescription,
-      taskType: taskType,
-      parameters: parameters,
     );
   }
 
@@ -85,6 +86,28 @@ class NovaAIOrchestrator {
     return await liteService.forecastCashflow(
       transactions: transactions,
       daysAhead: daysAhead,
+    );
+  }
+
+  /// Analyze budget
+  Future<Map<String, dynamic>> analyzeBudget({
+    required Map<String, dynamic> budgetData,
+    required Map<String, dynamic> spendingData,
+  }) async {
+    return await liteService.analyzeBudget(
+      budgetData: budgetData,
+      spendingData: spendingData,
+    );
+  }
+
+  /// Process chat
+  Future<Map<String, dynamic>> processChat({
+    required String message,
+    required Map<String, dynamic> financialContext,
+  }) async {
+    return await liteService.processChat(
+      message: message,
+      financialContext: financialContext,
     );
   }
 }

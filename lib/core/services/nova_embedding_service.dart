@@ -1,48 +1,51 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'dart:math' as math;
+import 'aws_bedrock_client.dart';
 
 /// Nova Multimodal Embeddings Service
-/// Replaces Vertex AI Search with Nova embeddings for:
+/// Uses Amazon Titan Embeddings V2 for:
 /// - Financial knowledge retrieval
 /// - Tax policy search
 /// - Receipt similarity search
 /// - Memory retrieval
 /// - Document search
+/// 
+/// Real AWS Bedrock Integration
 class NovaEmbeddingService {
-  final String apiKey;
-  final String region;
-  static const String _baseUrl = 'https://bedrock-runtime';
+  final AWSBedrockClient bedrockClient;
+  static const String modelId = 'amazon.titan-embed-text-v2:0';
   
   NovaEmbeddingService({
-    required this.apiKey,
-    required this.region,
-  });
+    required String accessKeyId,
+    required String secretAccessKey,
+    required String region,
+    String? sessionToken,
+  }) : bedrockClient = AWSBedrockClient(
+          accessKeyId: accessKeyId,
+          secretAccessKey: secretAccessKey,
+          region: region,
+          sessionToken: sessionToken,
+        );
 
-  /// Generate embeddings for text using Nova
+  /// Generate embeddings for text using Titan Embeddings V2
   Future<List<double>> generateEmbedding(String text) async {
     try {
-      final endpoint = '$_baseUrl.$region.amazonaws.com/model/amazon.titan-embed-text-v2:0/invoke';
-      
       final requestBody = {
         'inputText': text,
         'dimensions': 1024,
         'normalize': true,
       };
 
-      final response = await http.post(
-        Uri.parse(endpoint),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $apiKey',
-        },
-        body: jsonEncode(requestBody),
+      final response = await bedrockClient.invokeModel(
+        modelId: modelId,
+        body: requestBody,
       );
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
+      if (response['success'] == true) {
+        final data = response['data'];
         return List<double>.from(data['embedding']);
       } else {
-        throw Exception('Nova embedding error: ${response.statusCode}');
+        throw Exception('Titan embedding error: ${response['error']}');
       }
     } catch (e) {
       throw Exception('Nova embedding service error: $e');
@@ -62,7 +65,16 @@ class NovaEmbeddingService {
       // Calculate similarity scores
       final results = <Map<String, dynamic>>[];
       for (final doc in knowledgeBase) {
-        final docEmbedding = doc['embedding'] as List<double>;
+        // Check if document already has embedding
+        List<double> docEmbedding;
+        if (doc.containsKey('embedding')) {
+          docEmbedding = List<double>.from(doc['embedding']);
+        } else {
+          // Generate embedding for document
+          final docText = doc['text'] ?? doc['content'] ?? doc.toString();
+          docEmbedding = await generateEmbedding(docText);
+        }
+        
         final similarity = _cosineSimilarity(queryEmbedding, docEmbedding);
         
         results.add({
@@ -143,18 +155,10 @@ class NovaEmbeddingService {
       normB += b[i] * b[i];
     }
     
-    return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
-  }
-}
-
-class Math {
-  static double sqrt(double x) => x < 0 ? 0 : x == 0 ? 0 : _sqrt(x);
-  
-  static double _sqrt(double x) {
-    double guess = x / 2;
-    for (int i = 0; i < 10; i++) {
-      guess = (guess + x / guess) / 2;
+    if (normA == 0.0 || normB == 0.0) {
+      return 0.0;
     }
-    return guess;
+    
+    return dotProduct / (math.sqrt(normA) * math.sqrt(normB));
   }
 }

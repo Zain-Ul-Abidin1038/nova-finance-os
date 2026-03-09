@@ -1,30 +1,36 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'aws_bedrock_client.dart';
 
 /// Nova Receipt Analyzer
-/// Uses Nova multimodal capabilities for:
+/// Uses Amazon Nova Pro (multimodal) for:
 /// - Receipt OCR
 /// - Expense classification
 /// - Tax deduction detection
 /// - Financial category mapping
+/// 
+/// Real AWS Bedrock Integration with Vision Capabilities
 class NovaReceiptAnalyzer {
-  final String apiKey;
-  final String region;
-  static const String _baseUrl = 'https://bedrock-runtime';
+  final AWSBedrockClient bedrockClient;
+  static const String modelId = 'us.amazon.nova-pro-v1:0';
   
   NovaReceiptAnalyzer({
-    required this.apiKey,
-    required this.region,
-  });
+    required String accessKeyId,
+    required String secretAccessKey,
+    required String region,
+    String? sessionToken,
+  }) : bedrockClient = AWSBedrockClient(
+          accessKeyId: accessKeyId,
+          secretAccessKey: secretAccessKey,
+          region: region,
+          sessionToken: sessionToken,
+        );
 
-  /// Analyze receipt image using Nova multimodal
+  /// Analyze receipt image using Nova Pro multimodal
   Future<Map<String, dynamic>> analyzeReceipt({
     required String base64Image,
-    required String region,
+    required String userRegion,
   }) async {
     try {
-      final endpoint = '$_baseUrl.${this.region}.amazonaws.com/model/amazon.nova-pro-v1:0/invoke';
-      
       final requestBody = {
         'messages': [
           {
@@ -40,34 +46,25 @@ class NovaReceiptAnalyzer {
               },
               {
                 'text': '''
-Analyze this receipt and extract:
-1. Vendor name
-2. Date (YYYY-MM-DD)
-3. Total amount
-4. Currency
-5. Line items with prices
-6. Tax amount
-7. Payment method
-8. Category (dining, groceries, transportation, etc.)
-9. Tax deductibility (percentage 0-100)
-10. Deduction category (meals, travel, office supplies, etc.)
+Analyze this receipt and extract all information in JSON format:
 
-Region: $region
-
-Return as JSON with this structure:
 {
-  "vendor": "string",
+  "vendor": "string (merchant name)",
   "date": "YYYY-MM-DD",
   "total": number,
-  "currency": "string",
+  "currency": "string (USD, EUR, etc.)",
   "items": [{"name": "string", "price": number}],
   "tax": number,
-  "paymentMethod": "string",
-  "category": "string",
-  "taxDeductible": number,
-  "deductionCategory": "string",
-  "confidence": number
+  "paymentMethod": "string (cash, card, etc.)",
+  "category": "string (dining, groceries, transportation, utilities, entertainment, healthcare, shopping, travel, education, other)",
+  "taxDeductible": number (0-100 percentage),
+  "deductionCategory": "string (meals, travel, office supplies, etc.)",
+  "confidence": number (0-100)
 }
+
+Region: $userRegion
+
+Be precise and extract all visible information. If unsure, set confidence lower.
 '''
               }
             ]
@@ -76,20 +73,17 @@ Return as JSON with this structure:
         'inferenceConfig': {
           'temperature': 0.1,
           'maxTokens': 2048,
+          'topP': 0.9,
         },
       };
 
-      final response = await http.post(
-        Uri.parse(endpoint),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $apiKey',
-        },
-        body: jsonEncode(requestBody),
+      final response = await bedrockClient.invokeModel(
+        modelId: modelId,
+        body: requestBody,
       );
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
+      if (response['success'] == true) {
+        final data = response['data'];
         final resultText = data['output']['message']['content'][0]['text'];
         
         // Parse JSON from response
@@ -99,17 +93,20 @@ Return as JSON with this structure:
           return {
             'success': true,
             'receipt': receiptData,
+            'rawResponse': resultText,
           };
         } else {
           return {
             'success': false,
-            'error': 'Could not parse receipt data',
+            'error': 'Could not parse receipt data from response',
+            'rawResponse': resultText,
           };
         }
       } else {
         return {
           'success': false,
-          'error': 'Nova receipt analysis error: ${response.statusCode}',
+          'error': response['error'],
+          'statusCode': response['statusCode'],
         };
       }
     } catch (e) {
@@ -120,14 +117,12 @@ Return as JSON with this structure:
     }
   }
 
-  /// Classify expense category
+  /// Classify expense category using Nova Lite
   Future<String> classifyExpense({
     required String description,
     required double amount,
   }) async {
     try {
-      final endpoint = '$_baseUrl.$region.amazonaws.com/model/amazon.nova-lite-v1:0/invoke';
-      
       final requestBody = {
         'messages': [
           {
@@ -135,13 +130,13 @@ Return as JSON with this structure:
             'content': [
               {
                 'text': '''
-Classify this expense into one category:
+Classify this expense into ONE category:
 Description: $description
 Amount: \$$amount
 
 Categories: dining, groceries, transportation, utilities, entertainment, healthcare, shopping, travel, education, other
 
-Return only the category name.
+Return ONLY the category name, nothing else.
 '''
               }
             ]
@@ -153,18 +148,15 @@ Return only the category name.
         },
       };
 
-      final response = await http.post(
-        Uri.parse(endpoint),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $apiKey',
-        },
-        body: jsonEncode(requestBody),
+      final response = await bedrockClient.invokeModel(
+        modelId: 'us.amazon.nova-lite-v1:0',
+        body: requestBody,
       );
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        return data['output']['message']['content'][0]['text'].trim().toLowerCase();
+      if (response['success'] == true) {
+        final data = response['data'];
+        final category = data['output']['message']['content'][0]['text'].trim().toLowerCase();
+        return category;
       } else {
         return 'other';
       }
@@ -173,15 +165,13 @@ Return only the category name.
     }
   }
 
-  /// Detect tax deductions
+  /// Detect tax deductions using Nova Lite
   Future<Map<String, dynamic>> detectTaxDeductions({
     required String category,
     required String description,
     required double amount,
   }) async {
     try {
-      final endpoint = '$_baseUrl.$region.amazonaws.com/model/amazon.nova-lite-v1:0/invoke';
-      
       final requestBody = {
         'messages': [
           {
@@ -198,8 +188,8 @@ Return JSON:
 {
   "deductible": true/false,
   "percentage": 0-100,
-  "deductionType": "string",
-  "notes": "string"
+  "deductionType": "string (meals, travel, office, etc.)",
+  "notes": "string (brief explanation)"
 }
 '''
               }
@@ -212,17 +202,13 @@ Return JSON:
         },
       };
 
-      final response = await http.post(
-        Uri.parse(endpoint),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $apiKey',
-        },
-        body: jsonEncode(requestBody),
+      final response = await bedrockClient.invokeModel(
+        modelId: 'us.amazon.nova-lite-v1:0',
+        body: requestBody,
       );
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
+      if (response['success'] == true) {
+        final data = response['data'];
         final resultText = data['output']['message']['content'][0]['text'];
         
         final jsonMatch = RegExp(r'\{[\s\S]*\}').firstMatch(resultText);
@@ -248,10 +234,10 @@ Return JSON:
   }
 
   /// Map to financial category
-  Future<String> mapFinancialCategory({
+  String mapFinancialCategory({
     required String expenseCategory,
     required String description,
-  }) async {
+  }) {
     final categoryMap = {
       'dining': 'Food & Dining',
       'groceries': 'Groceries',

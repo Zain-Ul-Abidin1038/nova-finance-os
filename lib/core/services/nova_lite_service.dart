@@ -1,68 +1,81 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'aws_bedrock_client.dart';
 
 /// Nova 2 Lite Reasoning Engine
 /// Handles financial insights, decision synthesis, budget analysis,
 /// cashflow forecasting, and chat assistance using Amazon Nova 2 Lite
+/// 
+/// Real AWS Bedrock Integration with Signature V4 Authentication
 class NovaLiteService {
-  final String apiKey;
-  final String region;
-  static const String _baseUrl = 'https://bedrock-runtime';
+  final AWSBedrockClient bedrockClient;
+  static const String modelId = 'us.amazon.nova-lite-v1:0';
   
   NovaLiteService({
-    required this.apiKey,
-    required this.region,
-  });
+    required String accessKeyId,
+    required String secretAccessKey,
+    required String region,
+    String? sessionToken,
+  }) : bedrockClient = AWSBedrockClient(
+          accessKeyId: accessKeyId,
+          secretAccessKey: secretAccessKey,
+          region: region,
+          sessionToken: sessionToken,
+        );
 
   /// Send a message to Nova Lite for financial reasoning
   Future<Map<String, dynamic>> sendMessage({
     required String prompt,
     Map<String, dynamic>? context,
     bool deepReasoning = false,
+    double? temperature,
+    int? maxTokens,
   }) async {
     try {
-      final endpoint = '$_baseUrl.$region.amazonaws.com/model/amazon.nova-lite-v1:0/invoke';
-      
+      final messages = [
+        {
+          'role': 'user',
+          'content': [
+            {'text': prompt}
+          ]
+        }
+      ];
+
       final requestBody = {
-        'messages': [
-          {
-            'role': 'user',
-            'content': [
-              {'text': prompt}
-            ]
-          }
-        ],
+        'messages': messages,
         'inferenceConfig': {
-          'temperature': deepReasoning ? 0.3 : 0.7,
-          'maxTokens': 2048,
+          'temperature': temperature ?? (deepReasoning ? 0.3 : 0.7),
+          'maxTokens': maxTokens ?? 2048,
+          'topP': 0.9,
         },
-        if (context != null) 'system': [
+      };
+
+      // Add system context if provided
+      if (context != null) {
+        requestBody['system'] = [
           {
             'text': 'Financial context: ${jsonEncode(context)}'
           }
-        ],
-      };
+        ];
+      }
 
-      final response = await http.post(
-        Uri.parse(endpoint),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $apiKey',
-        },
-        body: jsonEncode(requestBody),
+      final response = await bedrockClient.invokeModel(
+        modelId: modelId,
+        body: requestBody,
       );
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
+      if (response['success'] == true) {
+        final data = response['data'];
         return {
           'success': true,
           'message': data['output']['message']['content'][0]['text'],
           'usage': data['usage'],
+          'stopReason': data['stopReason'],
         };
       } else {
         return {
           'success': false,
-          'error': 'Nova Lite API error: ${response.statusCode}',
+          'error': response['error'],
+          'statusCode': response['statusCode'],
         };
       }
     } catch (e) {
@@ -79,11 +92,11 @@ class NovaLiteService {
     required String insightType,
   }) async {
     final prompt = '''
-Analyze the following financial data and provide ${insightType} insights:
+Analyze the following financial data and provide $insightType insights:
 
 ${jsonEncode(financialData)}
 
-Provide actionable recommendations and predictions.
+Provide actionable recommendations and predictions in a clear, structured format.
 ''';
 
     return await sendMessage(
@@ -103,7 +116,11 @@ Based on these transactions, forecast cashflow for the next $daysAhead days:
 
 ${jsonEncode(transactions)}
 
-Provide daily balance predictions and identify potential shortfalls.
+Provide:
+1. Daily balance predictions
+2. Potential shortfalls with dates
+3. Spending pattern analysis
+4. Recommendations to avoid negative balance
 ''';
 
     return await sendMessage(
@@ -123,7 +140,11 @@ Compare budget vs actual spending:
 Budget: ${jsonEncode(budgetData)}
 Spending: ${jsonEncode(spendingData)}
 
-Identify overspending categories and suggest optimizations.
+Provide:
+1. Overspending categories with amounts
+2. Underspending categories
+3. Budget optimization suggestions
+4. Spending trends
 ''';
 
     return await sendMessage(
