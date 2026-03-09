@@ -164,8 +164,8 @@ NovaLedger AI demonstrates:
 
 #### 1. Clone Repository
 ```bash
-git clone https://github.com/your-org/NovaLedger-AI.git
-cd NovaLedger-AI
+git clone https://github.com/Zain-Ul-Abidin1038/nova-leadger_ai.git
+cd nova-leadger_ai
 ```
 
 #### 2. Install Dependencies
@@ -287,7 +287,7 @@ flutter run -d iPhone        # iOS
 
 ### Financial Intelligence Systems
 
-- **NovaFinancialBrain** - Master orchestrator (renamed from FinancialBrain)
+- **NovaFinancialBrain** - Master orchestrator
 - **CashflowPredictor** - 30-day balance forecasting
 - **TaxOptimizer** - Deduction planning
 - **AnomalyDetector** - Unusual pattern detection
@@ -482,8 +482,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Documentation**: Check the `/docs` folder for detailed guides
-- **Issues**: [GitHub Issues](https://github.com/your-org/NovaLedger-AI/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/NovaLedger-AI/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Zain-Ul-Abidin1038/nova-leadger_ai/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Zain-Ul-Abidin1038/nova-leadger_ai/discussions)
 - **Email**: support@novaledger.ai
 
 ---
