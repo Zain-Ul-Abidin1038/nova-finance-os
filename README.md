@@ -2,19 +2,18 @@
 
 🏆 **Built for the Amazon Nova AI Hackathon 2026**
 
-**Finance OS is the first Autonomous Financial Life Operating System powered entirely by Amazon Nova.**
-
-*The Autonomous Financial Life Operating System powered by Amazon Nova reasoning, embeddings, and intelligent agents.*
+**Finance OS is the first Autonomous Financial Life Operating System powered entirely by Amazon Nova — combining reasoning, embeddings, and intelligent agents to understand, predict, and autonomously manage financial decisions.**
 
 ---
 
 **Finance OS demonstrates how Amazon Nova can power real-world autonomous AI systems, not just chatbots.**
 
-[![Flutter](https://img.shields.io/badge/Flutter-3.10.8-02569B?logo=flutter)](https://flutter.dev)
-[![Dart](https://img.shields.io/badge/Dart-3.10.8-0175C2?logo=dart)](https://dart.dev)
-[![Amazon Nova](https://img.shields.io/badge/Amazon-Nova-FF9900?logo=amazon-aws)](https://aws.amazon.com/ai/generative-ai/nova/)
-[![AWS](https://img.shields.io/badge/AWS-Bedrock-FF9900?logo=amazon-aws)](https://aws.amazon.com/bedrock)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Flutter](https://img.shields.io/badge/Flutter-3.10.8-02569B?logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-3.10.8-0175C2?logo=dart&logoColor=white)
+![Amazon Nova](https://img.shields.io/badge/Amazon%20Nova-AI-FF9900?logo=amazon-aws&logoColor=white)
+![AWS Bedrock](https://img.shields.io/badge/AWS-Bedrock-FF9900?logo=amazon-aws&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?logo=opensourceinitiative&logoColor=white)
+![Hackathon](https://img.shields.io/badge/Hackathon-2026-blue?logo=amazon&logoColor=white)
 
 ---
 
@@ -54,6 +53,57 @@ By leveraging Amazon Nova's reasoning models and agent automation, Finance OS in
 
 ## 🏗️ System Architecture
 
+### Visual Architecture
+
+```mermaid
+graph TB
+    User[👤 User<br/>Mobile / Web / Desktop]
+    
+    User --> Flutter[📱 Flutter App<br/>Finance OS]
+    
+    Flutter --> Amplify[☁️ AWS Amplify<br/>Backend Infrastructure]
+    
+    Amplify --> Bedrock[🤖 AWS Bedrock<br/>AI Infrastructure]
+    
+    Bedrock --> NovaLayer[🧠 Nova AI Layer]
+    
+    NovaLayer --> Nova2Lite[Nova 2 Lite<br/>Financial Reasoning]
+    NovaLayer --> NovaEmbed[Nova Multimodal<br/>Embeddings]
+    NovaLayer --> NovaAct[Nova Act<br/>Agent Automation]
+    NovaLayer --> NovaVision[Nova Vision<br/>Receipt OCR]
+    
+    Nova2Lite --> Intelligence[💡 Financial Intelligence Layer]
+    NovaEmbed --> Intelligence
+    NovaAct --> Intelligence
+    NovaVision --> Intelligence
+    
+    Intelligence --> Brain[NovaFinancialBrain<br/>Orchestrator]
+    Intelligence --> BudgetAgent[Budget Agent]
+    Intelligence --> TaxAgent[Tax Agent]
+    Intelligence --> CashflowAgent[Cashflow Agent]
+    Intelligence --> ExecAgent[Execution Agent]
+    
+    Brain --> DataLayer[💾 Data Layer]
+    BudgetAgent --> DataLayer
+    TaxAgent --> DataLayer
+    CashflowAgent --> DataLayer
+    ExecAgent --> DataLayer
+    
+    DataLayer --> DynamoDB[(DynamoDB<br/>Financial Data)]
+    DataLayer --> S3[(S3<br/>Receipts & Audit)]
+    DataLayer --> Hive[(Hive<br/>Local Offline)]
+    
+    style User fill:#e1f5ff
+    style Flutter fill:#02569B,color:#fff
+    style Amplify fill:#FF9900,color:#fff
+    style Bedrock fill:#FF9900,color:#fff
+    style NovaLayer fill:#FF6B35,color:#fff
+    style Intelligence fill:#4ECDC4,color:#fff
+    style DataLayer fill:#95E1D3
+```
+
+### Architecture Flow
+
 ```
 User (Mobile / Web)
         │
@@ -84,6 +134,8 @@ Data Layer
  ├─ S3 (receipts & audit logs)
  └─ Hive (local offline storage)
 ```
+
+> **Note:** The Mermaid diagram above will render as a visual flowchart on GitHub. If viewing locally, see the ASCII diagram below.
 
 ---
 
@@ -151,6 +203,40 @@ Finance OS leverages the complete Amazon Nova stack:
 ✅ **AWS Bedrock** - Secure, scalable AI infrastructure  
 
 ### Agentic AI Architecture
+
+```mermaid
+graph TD
+    UserReq[👤 User Request]
+    
+    UserReq --> Brain[🧠 NovaFinancialBrain<br/>Nova 2 Lite Reasoning]
+    
+    Brain --> Orchestrator[🎯 NovaAgentOrchestrator<br/>Coordination Layer]
+    
+    Orchestrator --> BudgetAgent[💰 Budget Agent<br/>Spending Analysis]
+    Orchestrator --> TaxAgent[📋 Tax Agent<br/>Policy Search]
+    Orchestrator --> CashflowAgent[📊 Cashflow Agent<br/>Predictions]
+    Orchestrator --> ExecAgent[⚡ Execution Agent<br/>Nova Act]
+    
+    BudgetAgent --> Embeddings[🔍 Nova Embeddings<br/>Knowledge Retrieval]
+    TaxAgent --> Embeddings
+    CashflowAgent --> Lite[💭 Nova 2 Lite<br/>Reasoning]
+    
+    ExecAgent --> NovaAct[🤖 Nova Act<br/>Autonomous Execution]
+    
+    NovaAct --> Result[✅ Result<br/>Action Completed]
+    
+    style UserReq fill:#e1f5ff
+    style Brain fill:#FF6B35,color:#fff
+    style Orchestrator fill:#4ECDC4,color:#fff
+    style BudgetAgent fill:#95E1D3
+    style TaxAgent fill:#95E1D3
+    style CashflowAgent fill:#95E1D3
+    style ExecAgent fill:#95E1D3
+    style NovaAct fill:#FF9900,color:#fff
+    style Result fill:#90EE90
+```
+
+**Text Representation:**
 
 ```
 User Request
