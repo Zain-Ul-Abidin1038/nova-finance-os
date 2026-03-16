@@ -11,17 +11,14 @@ Welcome to **Nova Live Finance OS** - your AI-powered financial life operating s
    flutter --version
    ```
 
-2. **Google Cloud Account**
-   - Create project at [Google Cloud Console](https://console.cloud.google.com)
-   - Enable Nova API
-   - Generate API key
+2. **AWS Account**
+   - Create account at [AWS Console](https://console.aws.amazon.com)
+   - Enable Amazon Nova models in Bedrock console
+   - Create IAM user with Bedrock permissions
 
-3. **AWS Account** (Optional for cloud features)
+3. **AWS Amplify CLI** (Optional for cloud features)
    - Install Amplify CLI: `npm install -g @aws-amplify/cli`
    - Configure credentials
-
-4. **Firebase Account** (Optional for real-time features)
-   - Create project at [Firebase Console](https://console.firebase.google.com)
 
 ### Installation Steps
 
@@ -45,9 +42,11 @@ cp .env.example .env
 nano .env  # or use your preferred editor
 ```
 
-Add your Nova API key:
+Add your AWS credentials:
 ```
-GEMINI_API_KEY=your_nova_api_key_here
+AWS_ACCESS_KEY_ID=your_aws_access_key_id_here
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key_here
+AWS_REGION=us-east-1
 ```
 
 #### 4. Run the App
@@ -127,15 +126,6 @@ flutter run -d chrome
 
 ## 🔧 Configuration
 
-### Firebase (Optional)
-```bash
-# Install FlutterFire CLI
-dart pub global activate flutterfire_cli
-
-# Configure Firebase
-flutterfire configure
-```
-
 ### AWS Amplify (Optional)
 ```bash
 # Initialize Amplify
@@ -151,13 +141,12 @@ amplify add storage
 amplify push
 ```
 
-### Vertex AI Search (Optional for Document Grounding)
-1. Create a datastore in Google Cloud Console
-2. Add documents to the datastore
+### Amazon Kendra (Optional for Document Grounding)
+1. Create a Kendra index in AWS Console
+2. Add documents to the data source
 3. Update `.env`:
    ```
-   GCP_PROJECT_ID=your_project_id
-   VERTEX_DATASTORE_ID=your_datastore_id
+   AWS_KENDRA_INDEX_ID=your_kendra_index_id
    ```
 
 ## 📚 Documentation
@@ -171,10 +160,10 @@ amplify push
 
 ### Common Issues
 
-**1. "Nova API key not found"**
+**1. "AWS credentials not found"**
 - Ensure `.env` file exists in project root
-- Check that `GEMINI_API_KEY` is set correctly
-- Restart the app after adding the key
+- Check that `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are set correctly
+- Restart the app after adding credentials
 
 **2. "Camera permission denied"**
 - Grant camera permission in device settings
@@ -186,9 +175,9 @@ amplify push
 - Try again
 
 **4. "Grounded search not working"**
-- Verify Nova API key is valid
+- Verify AWS credentials are valid
 - Check internet connection
-- Ensure you're using Nova 1.5 or later
+- Ensure Amazon Nova models are enabled in Bedrock
 
 ## 💡 Tips
 

@@ -8,7 +8,8 @@ import 'package:nova_finance_os/core/theme/app_colors.dart';
 import 'package:nova_finance_os/core/theme/theme_provider.dart';
 import 'package:nova_finance_os/core/presentation/widgets/nova_logo.dart';
 import 'package:nova_finance_os/features/trace/services/nova_trace_service.dart';
-import 'package:nova_finance_os/features/finance/services/ai_finance_parser.dart';
+import 'package:nova_finance_os/features/chat/services/simple_chat_service.dart'
+    show SimpleChatService, simpleChatServiceProvider;
 
 class EnhancedChatScreen extends ConsumerStatefulWidget {
   const EnhancedChatScreen({super.key});
@@ -22,11 +23,20 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
   final ScrollController _scrollController = ScrollController();
   final List<ChatMessage> _messages = [];
   bool _isTyping = false;
+  bool _chatServiceInitialized = false;
 
   @override
   void initState() {
     super.initState();
     // Start with empty messages to show welcome screen
+  }
+
+  Future<void> _ensureChatServiceInitialized() async {
+    if (!_chatServiceInitialized) {
+      final chatService = ref.read(simpleChatServiceProvider);
+      await chatService.initialize();
+      _chatServiceInitialized = true;
+    }
   }
 
   Future<void> _sendMessage() async {
@@ -47,14 +57,16 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
     _scrollToBottom();
 
     final traceService = ref.read(novaTraceServiceProvider);
-    final aiParser = ref.read(aiFinanceParserProvider);
+    final chatService = ref.read(simpleChatServiceProvider);
 
     traceService.addTrace("[Chat] User: $message");
-    traceService.addTrace("[Chat] Parsing with Nova AI via AWS Bedrock...");
+    traceService.addTrace("[Chat] Processing with Nova AI via AWS Bedrock...");
 
     try {
-      // Use AI to parse and execute financial command
-      final result = await aiParser.parseAndExecute(message);
+      await _ensureChatServiceInitialized();
+
+      // Use SimpleChatService for full conversation context + financial parsing
+      final result = await chatService.processMessage(message);
 
       final responseText = result['message'] ?? 'Command processed';
       final thoughtSignature = result['thoughtSignature'] ?? '';
@@ -64,13 +76,13 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
           text: responseText,
           isUser: false,
           timestamp: DateTime.now(),
-          thoughtSignature: thoughtSignature,
+          thoughtSignature: thoughtSignature.isNotEmpty ? thoughtSignature : null,
         ));
         _isTyping = false;
       });
 
       if (result['success'] == true) {
-        traceService.addTrace("[Chat] ✓ Transaction recorded successfully");
+        traceService.addTrace("[Chat] ✓ Response received");
         if (thoughtSignature.isNotEmpty) {
           traceService.addTrace("[Thought] $thoughtSignature");
         }
@@ -135,6 +147,18 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
           },
         ),
         actions: [
+          // Clear chat button
+          IconButton(
+            icon: Icon(Icons.delete_outline, color: textColor.withValues(alpha: 0.7)),
+            onPressed: () async {
+              final chatService = ref.read(simpleChatServiceProvider);
+              await chatService.clearMessages();
+              setState(() {
+                _messages.clear();
+              });
+            },
+            tooltip: 'Clear chat',
+          ),
           // Marathon Agent Button
           IconButton(
             icon: Container(
@@ -220,7 +244,7 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
             
             // Subtitle
             Text(
-              'nova.accountant • Financial Assistant',
+              'AI-Powered Expense Tracking',
               style: TextStyle(
                 color: secondaryTextColor.withValues(alpha: 0.8),
                 fontSize: 14,
@@ -229,9 +253,9 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
             
             const SizedBox(height: 120),
             
-            // "You're now friends" message
+            // "Start a conversation" message
             Text(
-              'You\'re now friends. Say hi!',
+              'Start a conversation',
               style: TextStyle(
                 color: secondaryTextColor.withValues(alpha: 0.7),
                 fontSize: 14,

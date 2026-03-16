@@ -12,9 +12,8 @@ inclusion: always
 
 ```
 lib/
-├── main.dart                    # App entry point, Firebase initialization
+├── main.dart                    # App entry point, AWS initialization
 ├── app.dart                     # Root app widget with theme and router
-├── firebase_options.dart        # Generated Firebase config
 ├── amplifyconfiguration.dart    # AWS Amplify config
 │
 ├── core/                        # Shared infrastructure

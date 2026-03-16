@@ -56,10 +56,17 @@ class SimpleChatService {
   });
 
   Future<void> initialize() async {
-    if (!Hive.isAdapterRegistered(3)) {
-      // Hive.registerAdapter(ChatMessageAdapter());
+    try {
+      if (!Hive.isAdapterRegistered(3)) {
+        // ChatMessage Hive adapter not generated yet — skip persistence
+        safePrint('[SimpleChatService] Hive adapter not registered, using in-memory only');
+        return;
+      }
+      _box = await Hive.openBox<ChatMessage>(_boxName);
+    } catch (e) {
+      safePrint('[SimpleChatService] Hive init error (non-fatal): $e');
+      // Continue without persistence — chat still works in-memory
     }
-    _box = await Hive.openBox<ChatMessage>(_boxName);
   }
 
   Future<void> saveMessage(ChatMessage message) async {
@@ -189,49 +196,48 @@ class SimpleChatService {
       final contextPrompt = '''User: $userMessage
 
 <financial_context>
-Balance: ₹${summary['balance']}
-Total Expenses: ₹${summary['totalExpenses']}
-Total Income: ₹${summary['totalIncome']}
-Money owed to you: ₹${summary['totalReceivables']}
-Money you owe: ₹${summary['totalPayables']}
-Net Worth: ₹${summary['netWorth']}
+Balance: ${summary['balance']}
+Total Expenses: ${summary['totalExpenses']}
+Total Income: ${summary['totalIncome']}
+Money owed to you: ${summary['totalReceivables']}
+Money you owe: ${summary['totalPayables']}
+Net Worth: ${summary['netWorth']}
 </financial_context>
 
-<conversation_history>
-${_conversationHistory.map((m) => '${m['role']}: ${m['content']}').join('\n')}
-</conversation_history>
-
-Respond as Finance OS, a helpful financial AI assistant. Be conversational, ask clarifying questions when needed, and provide actionable insights.''';
+Respond as Finance OS, a helpful financial AI assistant. Be conversational and provide actionable insights.''';
 
       final response = await novaService.sendMessage(
         prompt: contextPrompt,
         systemInstruction: '''You are Finance OS, an intelligent financial AI assistant.
-
-Key behaviors:
-1. Ask clarifying questions when information is incomplete
-2. Provide specific, actionable advice
-3. Reference their financial data when relevant
-4. Be conversational and friendly
-5. Suggest next steps or actions
-
-Examples:
-- If they mention spending, ask about category if not specified
-- If they ask about savings, suggest specific strategies based on their expenses
-- If they mention a person, ask if it's a loan or expense
-- Always be proactive and helpful''',
+Be conversational and friendly. Provide specific, actionable advice.
+Reference their financial data when relevant.''',
       );
 
-      final responseText = response['text'] ?? 'How can I help you with your finances?';
+      if (response['success'] == true) {
+        final responseText = response['text'] ?? response['message'] ?? '';
+        if (responseText.isNotEmpty) {
+          _conversationHistory.add({
+            'role': 'assistant',
+            'content': responseText,
+          });
+          return {
+            'success': true,
+            'message': responseText,
+            'thoughtSignature': response['thoughtSignature'] ?? '',
+          };
+        }
+      }
       
+      // Bedrock unavailable — provide local response with financial context
+      final localResponse = _buildLocalResponse(userMessage, summary);
       _conversationHistory.add({
         'role': 'assistant',
-        'content': responseText,
+        'content': localResponse,
       });
-
       return {
         'success': true,
-        'message': responseText,
-        'thoughtSignature': response['thoughtSignature'] ?? '',
+        'message': localResponse,
+        'thoughtSignature': '',
       };
     } catch (e) {
       return {
@@ -240,6 +246,28 @@ Examples:
         'thoughtSignature': '',
       };
     }
+  }
+
+  /// Build a local response using financial data when AI is unavailable
+  String _buildLocalResponse(String userMessage, Map<String, dynamic> summary) {
+    final msg = userMessage.toLowerCase();
+    
+    if (msg.contains('balance') || msg.contains('summary') || msg.contains('how much')) {
+      final balance = (summary['balance'] as num?)?.toStringAsFixed(2) ?? '0.00';
+      final income = (summary['totalIncome'] as num?)?.toStringAsFixed(2) ?? '0.00';
+      final expenses = (summary['totalExpenses'] as num?)?.toStringAsFixed(2) ?? '0.00';
+      return '📊 Your Financial Summary:\n\n💰 Balance: ₹$balance\n📥 Income: ₹$income\n📤 Expenses: ₹$expenses\n\nWant to add a transaction? Just tell me naturally!';
+    }
+    
+    if (msg.contains('hi') || msg.contains('hello') || msg.contains('hey')) {
+      return 'Hello! I\'m Finance OS, your AI financial assistant.\n\nTry:\n• "I spent 500 on food"\n• "Received 50000 salary"\n• "Given 2000 to Ahmed"\n• "Show my balance"';
+    }
+    
+    if (msg.contains('thank')) {
+      return 'You\'re welcome! Let me know if you need anything else. 😊';
+    }
+    
+    return 'I\'m Finance OS, your financial assistant. I can track expenses, income, loans, and more.\n\nTry: "I spent 500 on food" or "Show my balance"';
   }
 
   /// Process image file (receipt, invoice, etc.)

@@ -45,6 +45,15 @@ class _NovaNavigatorScreenState extends ConsumerState<NovaNavigatorScreen> {
     try {
       final navigatorService = ref.read(novaNavigatorServiceProvider);
       
+      // Wire up navigation callback
+      navigatorService.onNavigate = (route) {
+        if (mounted) {
+          Future.delayed(const Duration(milliseconds: 500), () {
+            if (mounted) context.push(route);
+          });
+        }
+      };
+      
       // Create task
       final task = NavigationTask(
         description: taskDescription,
@@ -101,40 +110,40 @@ class _NovaNavigatorScreenState extends ConsumerState<NovaNavigatorScreen> {
 
     final quickTasks = [
       {
-        'icon': Icons.analytics_outlined,
-        'title': 'Spending Analysis',
-        'description': 'Analyze your spending patterns',
-        'task': 'Analyze my spending patterns this month and suggest where I can save',
+        'icon': Icons.receipt_long_outlined,
+        'title': 'Add Expense',
+        'description': 'Record a new expense',
+        'task': 'I spent 500 on food',
       },
       {
         'icon': Icons.account_balance_wallet_outlined,
-        'title': 'Budget Plan',
-        'description': 'Create a smart budget',
-        'task': 'Create a monthly budget plan based on my income and expenses',
+        'title': 'Add Income',
+        'description': 'Record new income',
+        'task': 'Received 50000 salary',
       },
       {
-        'icon': Icons.category_outlined,
-        'title': 'Categorize Expenses',
-        'description': 'Auto-categorize transactions',
-        'task': 'Review and categorize my recent uncategorized expenses',
+        'icon': Icons.analytics_outlined,
+        'title': 'Analyze Spending',
+        'description': 'View spending breakdown',
+        'task': 'Analyze my spending patterns',
       },
       {
-        'icon': Icons.trending_up,
-        'title': 'Cashflow Forecast',
-        'description': 'Predict future cashflow',
-        'task': 'Forecast my cashflow for the next 30 days based on my transaction history',
+        'icon': Icons.account_balance_outlined,
+        'title': 'Show Balance',
+        'description': 'View financial summary',
+        'task': 'Show my balance',
       },
       {
-        'icon': Icons.receipt_long_outlined,
-        'title': 'Tax Summary',
-        'description': 'Prepare tax deductions',
-        'task': 'Summarize my tax-deductible expenses and generate a tax report',
+        'icon': Icons.document_scanner_outlined,
+        'title': 'Scan Receipt',
+        'description': 'Open receipt scanner',
+        'task': 'Open receipt scanner',
       },
       {
-        'icon': Icons.savings_outlined,
-        'title': 'Savings Goal',
-        'description': 'Plan your savings',
-        'task': 'Help me set up a savings goal and calculate how much I need to save monthly',
+        'icon': Icons.currency_exchange,
+        'title': 'Currency Convert',
+        'description': 'Open currency converter',
+        'task': 'Open currency converter',
       },
     ];
 

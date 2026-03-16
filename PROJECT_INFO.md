@@ -23,9 +23,9 @@ Nova Live Finance OS is a revolutionary AI-powered financial assistant that tran
 
 ### Technology Stack
 - **Framework:** Flutter 3.10.8
-- **AI Engine:** Google Nova 3 (Flash & Pro)
-- **Grounding:** Vertex AI Search + Google Search
-- **Backend:** AWS Amplify + Firebase
+- **AI Engine:** Amazon Nova (Lite & Pro) via AWS Bedrock
+- **Grounding:** Amazon Kendra + Web Search
+- **Backend:** AWS Amplify
 - **State Management:** Riverpod 3.2.1
 - **Navigation:** GoRouter 17.1.0
 
@@ -90,11 +90,12 @@ Required in `.env` file:
 
 ```bash
 # Required
-GEMINI_API_KEY=your_nova_api_key
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+AWS_REGION=us-east-1
 
 # Optional (for grounded search with documents)
-GCP_PROJECT_ID=your_gcp_project_id
-VERTEX_DATASTORE_ID=your_datastore_id
+AWS_KENDRA_INDEX_ID=your_kendra_index_id
 ```
 
 ## 📊 Project Statistics
@@ -173,10 +174,9 @@ VERTEX_DATASTORE_ID=your_datastore_id
 
 Built with:
 - **Flutter** - Cross-platform framework
-- **Google Nova** - AI engine
-- **Vertex AI Search** - Grounded search
+- **Amazon Nova** - AI engine (via AWS Bedrock)
+- **Amazon Kendra** - Grounded search
 - **AWS Amplify** - Backend infrastructure
-- **Firebase** - Real-time features
 
 ## 📄 License
 

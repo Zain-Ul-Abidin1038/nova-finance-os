@@ -161,7 +161,7 @@ class AIFinanceParser {
     String originalMessage,
   ) async {
     try {
-      // Use Nova V3 for conversational response (auto-selects Flash)
+      // Use Nova V3 for conversational response
       final response = await novaService.sendMessage(
         prompt: originalMessage,
         systemInstruction: '''You are Finance OS, a friendly AI financial assistant.
@@ -172,30 +172,57 @@ When users greet you or have general conversation:
 - Mention you can help with: tracking expenses, analyzing receipts, managing loans, financial insights
 - Keep responses concise (2-3 sentences)
 
-Examples:
-- "hi" → "Hello! I'm Finance OS, your AI financial assistant. I can help you track expenses, scan receipts, manage loans, and provide financial insights. How can I assist you today?"
-- "how are you" → "I'm doing great, thank you! Ready to help you manage your finances. Would you like to log an expense, check your balance, or analyze a receipt?"
-- "what can you do" → "I can help you track expenses, scan and analyze receipts with AI, manage IOUs, calculate tax deductions, and provide financial insights. Just tell me what you spent or ask about your finances!"
-
 For financial commands, users can say things like:
-- "I spent \$50 on lunch"
-- "Add 500 rupees given to bilal"
+- "I spent 50 on lunch"
+- "Add 500 given to bilal"
 - "Show my balance"
 ''',
       );
 
+      if (response['success'] == true) {
+        return {
+          'success': true,
+          'message': response['text'] ?? response['message'] ?? _localConversationResponse(originalMessage),
+          'thoughtSignature': response['thoughtSignature'] ?? '',
+        };
+      }
+      
+      // Bedrock unavailable — use local response
       return {
         'success': true,
-        'message': response['text'] ?? 'Hello! How can I help you with your finances today?',
-        'thoughtSignature': response['thoughtSignature'] ?? '',
+        'message': _localConversationResponse(originalMessage),
+        'thoughtSignature': '',
       };
     } catch (e) {
       return {
         'success': true,
-        'message': 'Hello! I\'m Finance OS, your AI financial assistant. I can help you track expenses, scan receipts, and manage your finances. Try saying "I spent \$50 on lunch" or "show my balance".',
+        'message': _localConversationResponse(originalMessage),
         'thoughtSignature': '',
       };
     }
+  }
+
+  /// Local conversation response when AI is unavailable
+  String _localConversationResponse(String message) {
+    final msg = message.toLowerCase().trim();
+    
+    if (msg.contains('hi') || msg.contains('hello') || msg.contains('hey') || msg.contains('assalam') || msg == 'yo') {
+      return 'Hello! I\'m Finance OS, your AI financial assistant. I can help you track expenses, manage loans, and provide financial insights.\n\nTry saying:\n• "I spent 500 on food"\n• "Received 50000 salary"\n• "Given 2000 to Ahmed"\n• "Show my balance"';
+    }
+    
+    if (msg.contains('how are you') || msg.contains('what\'s up') || msg.contains('how do you do')) {
+      return 'I\'m doing great, thanks for asking! Ready to help you manage your finances. What would you like to do?';
+    }
+    
+    if (msg.contains('what can you do') || msg.contains('help') || msg.contains('features')) {
+      return 'I can help you with:\n\n• Track expenses — "I spent 1200 on groceries"\n• Record income — "Got 50000 salary"\n• Manage loans — "Given 5000 to Ali"\n• Track payables — "Have to pay 12000 rent"\n• View balance — "Show my balance"\n\nJust type naturally and I\'ll handle the rest!';
+    }
+    
+    if (msg.contains('thank') || msg.contains('thanks')) {
+      return 'You\'re welcome! Let me know if you need anything else. 😊';
+    }
+    
+    return 'I\'m Finance OS, your financial assistant. I can track expenses, income, loans, and more.\n\nTry: "I spent 500 on food" or "Show my balance"';
   }
 
   /// Check if message contains multiple transactions
@@ -382,6 +409,18 @@ Rules:
 
   /// Parse and execute a single transaction
   Future<Map<String, dynamic>> _parseSingleTransaction(String userMessage) async {
+    // First try local keyword parsing (works without AI)
+    final localParsed = _localParse(userMessage);
+    
+    // If local parsing found a clear financial action, use it directly
+    if (localParsed != null && localParsed['action'] != 'unknown') {
+      safePrint('[AI Parser] Local parse: $localParsed');
+      final result = await _executeAction(localParsed);
+      result['thoughtSignature'] = 'Parsed locally';
+      return result;
+    }
+
+    // Try AI parsing via Bedrock
     final prompt = '''Parse this financial command and extract structured data.
 
 User said: "$userMessage"
@@ -395,37 +434,11 @@ Return ONLY a JSON object with these fields:
 - description: brief description
 
 Examples:
-- "add 500 rupees which I have given to my friend bilal as in help category" 
-  → {"action":"add_loan_given","amount":500,"currency":"INR","category":"help","personName":"bilal","description":"help"}
-
-- "I spent 1200 on groceries"
-  → {"action":"add_expense","amount":1200,"currency":"INR","category":"groceries","personName":null,"description":"groceries"}
-
-- "received 5000 salary"
-  → {"action":"add_income","amount":5000,"currency":"INR","category":"salary","personName":null,"description":"salary"}
-
-- "I got payment from client which is 200000"
-  → {"action":"add_income","amount":200000,"currency":"INR","category":"client payment","personName":"client","description":"client payment"}
-
-- "i have to pay gas bill next week to gas company which is 12000"
-  → {"action":"add_payable","amount":12000,"currency":"INR","category":"utilities","personName":"gas company","description":"gas bill"}
-
-- "have to give house rent which is 50000"
-  → {"action":"add_payable","amount":50000,"currency":"INR","category":"rent","personName":"landlord","description":"house rent"}
-
-- "ali took 30000 from me he will return to me next month"
-  → {"action":"add_loan_given","amount":30000,"currency":"INR","category":"loan","personName":"ali","description":"loan to ali"}
-
-- "ali have to give me 2000 next week he took loan from me"
-  → {"action":"add_receivable","amount":2000,"currency":"INR","category":"loan","personName":"ali","description":"loan repayment from ali"}
-
-- "i spent 20000 to get new smart phone"
-  → {"action":"add_expense","amount":20000,"currency":"INR","category":"electronics","personName":null,"description":"new smart phone"}
-
-IMPORTANT: 
-- "have to give me" or "need to give me" = add_receivable (money coming to you)
-- "have to give" or "need to give" (without "me") = add_payable (money you owe)
-- "took from me" or "borrowed from me" = add_loan_given or add_receivable
+- "I spent 1200 on groceries" → {"action":"add_expense","amount":1200,"currency":"INR","category":"groceries","description":"groceries"}
+- "received 5000 salary" → {"action":"add_income","amount":5000,"currency":"INR","category":"salary","description":"salary"}
+- "given 40000 to ahmed" → {"action":"add_loan_given","amount":40000,"currency":"INR","category":"loan","personName":"ahmed","description":"loan to ahmed"}
+- "ali took 30000 from me" → {"action":"add_receivable","amount":30000,"currency":"INR","category":"loan","personName":"ali","description":"loan to ali"}
+- "have to pay 12000 gas bill" → {"action":"add_payable","amount":12000,"currency":"INR","category":"utilities","personName":"gas company","description":"gas bill"}
 
 Return ONLY the JSON object, no other text.''';
 
@@ -433,23 +446,7 @@ Return ONLY the JSON object, no other text.''';
       final response = await novaService.sendStructuredMessage(
         prompt: prompt,
         responseSchema: NovaSchemas.financeCommand,
-        systemInstruction: '''You are a financial data parser. Extract structured financial data from user messages.
-
-Rules:
-1. Return ONLY valid JSON matching the schema
-2. Use "add_income" for money received (salary, payment, etc)
-3. Use "add_expense" for money spent (purchases, bills paid immediately)
-4. Use "add_payable" for bills/debts to pay in future (I have to pay, I need to give)
-5. Use "add_receivable" or "add_loan_given" for money others owe you (have to give ME, took from ME, borrowed from ME)
-6. Use "add_loan_received" for money you borrowed
-7. Always include amount as a number
-8. Set personName for loans and receivables/payables
-9. Infer category from context (utilities, rent, loan, salary, etc)
-
-CRITICAL: 
-- "X have to give me Y" = add_receivable (X owes you)
-- "I have to give X Y" = add_payable (you owe X)
-- "X took Y from me" = add_receivable (X owes you)''',
+        systemInstruction: 'You are a financial data parser. Extract structured financial data from user messages. Return ONLY valid JSON.',
       );
 
       if (response['success'] == true) {
@@ -472,6 +469,10 @@ CRITICAL:
         
         return result;
       } else {
+        // Bedrock failed — if local parse found unknown, handle as conversation
+        if (localParsed != null && localParsed['action'] == 'unknown') {
+          return await _handleGeneralConversation(localParsed, userMessage);
+        }
         return {
           'success': false,
           'message': 'Could not parse command: ${response['error']}',
@@ -480,11 +481,155 @@ CRITICAL:
       }
     } catch (e) {
       safePrint('[AI Parser] Error: $e');
+      // Fallback to local parse result or conversation
+      if (localParsed != null && localParsed['action'] == 'unknown') {
+        return await _handleGeneralConversation(localParsed, userMessage);
+      }
       return {
         'success': false,
         'message': 'Error: $e',
         'thoughtSignature': '',
       };
     }
+  }
+
+  /// Local keyword-based parser — works without AI/Bedrock
+  Map<String, dynamic>? _localParse(String userMessage) {
+    final msg = userMessage.toLowerCase().trim();
+    
+    // Extract amount using regex
+    final amountMatch = RegExp(r'[\$₹]?\s*(\d+[\d,]*\.?\d*)').firstMatch(msg);
+    final amount = amountMatch != null 
+        ? double.tryParse(amountMatch.group(1)!.replaceAll(',', ''))
+        : null;
+
+    // Query commands
+    if (msg.contains('balance') || msg.contains('summary') || msg.contains('show') || msg.contains('how much')) {
+      return {'action': 'query', 'amount': null, 'category': 'query', 'description': userMessage};
+    }
+
+    // Expense keywords
+    if (msg.contains('spent') || msg.contains('bought') || msg.contains('purchased')) {
+      if (amount != null) {
+        final category = _inferCategory(msg);
+        return {
+          'action': 'add_expense',
+          'amount': amount,
+          'category': category,
+          'description': userMessage,
+          'personName': null,
+        };
+      }
+    }
+
+    // Income keywords
+    if (msg.contains('received') || msg.contains('got') || msg.contains('salary') || msg.contains('income') || msg.contains('earned')) {
+      if (amount != null) {
+        final category = msg.contains('salary') ? 'salary' : 'income';
+        return {
+          'action': 'add_income',
+          'amount': amount,
+          'category': category,
+          'description': userMessage,
+          'personName': null,
+        };
+      }
+    }
+
+    // Loan given / receivable
+    if (msg.contains('given to') || msg.contains('lent to') || msg.contains('gave to') || msg.contains('took from me') || msg.contains('borrowed from me')) {
+      if (amount != null) {
+        final person = _extractPerson(msg);
+        return {
+          'action': 'add_loan_given',
+          'amount': amount,
+          'category': 'loan',
+          'description': userMessage,
+          'personName': person,
+        };
+      }
+    }
+
+    // Receivable (someone owes you)
+    if (msg.contains('have to give me') || msg.contains('owes me') || msg.contains('need to give me')) {
+      if (amount != null) {
+        final person = _extractPerson(msg);
+        return {
+          'action': 'add_receivable',
+          'amount': amount,
+          'category': 'loan',
+          'description': userMessage,
+          'personName': person,
+        };
+      }
+    }
+
+    // Payable (you owe someone)
+    if (msg.contains('have to pay') || msg.contains('need to pay') || msg.contains('have to give') || msg.contains('owe')) {
+      if (amount != null) {
+        final person = _extractPerson(msg);
+        final category = _inferCategory(msg);
+        return {
+          'action': 'add_payable',
+          'amount': amount,
+          'category': category,
+          'description': userMessage,
+          'personName': person ?? 'Unknown',
+        };
+      }
+    }
+
+    // Paid (expense with vendor)
+    if (msg.contains('paid')) {
+      if (amount != null) {
+        final category = _inferCategory(msg);
+        return {
+          'action': 'add_expense',
+          'amount': amount,
+          'category': category,
+          'description': userMessage,
+          'personName': null,
+        };
+      }
+    }
+
+    // No financial action detected — mark as unknown for general conversation
+    return {'action': 'unknown', 'description': userMessage};
+  }
+
+  String _inferCategory(String msg) {
+    if (msg.contains('food') || msg.contains('lunch') || msg.contains('dinner') || msg.contains('breakfast') || msg.contains('pizza') || msg.contains('restaurant')) return 'food';
+    if (msg.contains('groceries') || msg.contains('grocery')) return 'groceries';
+    if (msg.contains('transport') || msg.contains('uber') || msg.contains('taxi') || msg.contains('fuel') || msg.contains('gas')) return 'transport';
+    if (msg.contains('rent') || msg.contains('house')) return 'rent';
+    if (msg.contains('bill') || msg.contains('electricity') || msg.contains('water') || msg.contains('internet')) return 'utilities';
+    if (msg.contains('phone') || msg.contains('laptop') || msg.contains('electronics')) return 'electronics';
+    if (msg.contains('shopping') || msg.contains('clothes') || msg.contains('shoes')) return 'shopping';
+    if (msg.contains('entertainment') || msg.contains('movie') || msg.contains('game')) return 'entertainment';
+    if (msg.contains('medical') || msg.contains('doctor') || msg.contains('hospital') || msg.contains('medicine')) return 'medical';
+    return 'other';
+  }
+
+  String? _extractPerson(String msg) {
+    // Try patterns like "to X", "from X", "X took", "X owes"
+    final patterns = [
+      RegExp(r'(?:given to|lent to|gave to|paid to)\s+(\w+)', caseSensitive: false),
+      RegExp(r'(\w+)\s+(?:took|borrowed|owes)', caseSensitive: false),
+      RegExp(r'(?:from)\s+(\w+)', caseSensitive: false),
+      RegExp(r'(?:to)\s+(\w+)', caseSensitive: false),
+    ];
+    
+    final stopWords = {'me', 'my', 'i', 'the', 'a', 'an', 'pay', 'give', 'get', 'have', 'need', 'will', 'next', 'this', 'that'};
+    
+    for (final pattern in patterns) {
+      final match = pattern.firstMatch(msg);
+      if (match != null) {
+        final name = match.group(1)!.toLowerCase();
+        if (!stopWords.contains(name) && name.length > 1) {
+          return match.group(1)!;
+        }
+      }
+    }
+    return null;
   }
 }

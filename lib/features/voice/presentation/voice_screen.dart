@@ -78,9 +78,9 @@ class _VoiceScreenState extends ConsumerState<VoiceScreen> with SingleTickerProv
       _speech.stop();
       
       if (_text.isNotEmpty && _text != 'Listening...') {
-        // TODO: Process voice command with Vertex AI
+        // TODO: Process voice command with Amazon Nova via AWS Bedrock
         setState(() {
-          _text = 'Processing: "$_text"\n\n(Configure Firebase to enable AI processing)';
+          _text = 'Processing: "$_text"\n\n(Configure AWS Bedrock to enable AI processing)';
         });
       }
     }

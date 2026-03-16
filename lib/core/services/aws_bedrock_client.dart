@@ -11,7 +11,7 @@ class AWSBedrockClient {
   final String region;
   final String? sessionToken;
   
-  static const String service = 'bedrock';
+  static const String service = 'bedrock-runtime';
   static const String algorithm = 'AWS4-HMAC-SHA256';
   
   AWSBedrockClient({
@@ -29,7 +29,8 @@ class AWSBedrockClient {
     String? contentType,
   }) async {
     final endpoint = 'bedrock-runtime.$region.amazonaws.com';
-    final path = '/model/$modelId/invoke';
+    final encodedModelId = Uri.encodeComponent(modelId);
+    final path = '/model/$encodedModelId/invoke';
     final url = 'https://$endpoint$path';
     
     final bodyJson = jsonEncode(body);
@@ -56,6 +57,8 @@ class AWSBedrockClient {
           'statusCode': response.statusCode,
         };
       } else {
+        // Log detailed error for debugging
+        print('[AWSBedrockClient] Error ${response.statusCode}: ${response.body}');
         return {
           'success': false,
           'error': 'Bedrock API error: ${response.statusCode}',
@@ -64,6 +67,7 @@ class AWSBedrockClient {
         };
       }
     } catch (e) {
+      print('[AWSBedrockClient] Network error: $e');
       return {
         'success': false,
         'error': 'Network error: $e',
@@ -86,10 +90,21 @@ class AWSBedrockClient {
     
     // Create canonical request
     final payloadHash = _sha256Hash(body);
-    final canonicalHeaders = 'content-type:$contentType\n'
+    
+    // Build canonical headers (must be sorted alphabetically)
+    var canonicalHeaders = 'content-type:$contentType\n'
         'host:$endpoint\n'
         'x-amz-date:$amzDate\n';
-    final signedHeaders = 'content-type;host;x-amz-date';
+    var signedHeaders = 'content-type;host;x-amz-date';
+    
+    // Include security token in signed headers if present
+    if (sessionToken != null) {
+      canonicalHeaders = 'content-type:$contentType\n'
+          'host:$endpoint\n'
+          'x-amz-date:$amzDate\n'
+          'x-amz-security-token:$sessionToken\n';
+      signedHeaders = 'content-type;host;x-amz-date;x-amz-security-token';
+    }
     
     final canonicalRequest = '$method\n'
         '$path\n'

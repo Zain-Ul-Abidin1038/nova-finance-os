@@ -38,8 +38,8 @@ The Grounded Search feature enables Finance OS to provide factual, verifiable an
 ┌─────────────────────────────────────────────────────────────┐
 │                   External APIs                              │
 │  ┌────────────────────┐  ┌──────────────────────────────┐  │
-│  │  Nova API with   │  │  Vertex AI Search            │  │
-│  │  Google Search     │  │  (Document Datastores)       │  │
+│  │  Amazon Nova with │  │  Amazon Kendra              │  │
+│  │  Web Search        │  │  (Document Datastores)       │  │
 │  │  Grounding         │  │                              │  │
 │  └────────────────────┘  └──────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────┘
@@ -54,7 +54,7 @@ The Grounded Search feature enables Finance OS to provide factual, verifiable an
   - Latest regulations
   - Market prices
   - Recent news
-- **API**: Nova with `googleSearchRetrieval` tool
+- **API**: Amazon Nova with web search retrieval tool
 - **Benefits**: Always up-to-date information with citations
 
 ### 2. Document Search Grounding
@@ -64,7 +64,7 @@ The Grounded Search feature enables Finance OS to provide factual, verifiable an
   - Internal accounting guidelines
   - Historical financial data
   - Compliance documents
-- **API**: Nova with Vertex AI Search datastore
+- **API**: Amazon Nova with Amazon Kendra datastore
 - **Benefits**: Accurate domain-specific answers
 
 ### 3. Hybrid Search
@@ -118,7 +118,7 @@ Future<Map<String, dynamic>> searchWithWebGrounding({
   String? context,
 })
 
-// Document search with Vertex AI Search
+// Document search with Amazon Kendra
 Future<Map<String, dynamic>> searchWithDocumentGrounding({
   required String query,
   String? context,
@@ -161,34 +161,35 @@ Add to `.env`:
 
 ```bash
 # Required
-GEMINI_API_KEY=your_nova_api_key
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+AWS_REGION=us-east-1
 
 # Optional (for document grounding)
-GCP_PROJECT_ID=your_gcp_project_id
-VERTEX_DATASTORE_ID=your_datastore_id
+AWS_KENDRA_INDEX_ID=your_kendra_index_id
 ```
 
-### Vertex AI Search Setup
+### Amazon Kendra Setup
 
-1. **Create a Datastore**:
+1. **Create a Kendra Index**:
    ```bash
-   gcloud alpha discovery-engine data-stores create YOUR_DATASTORE_ID \
-     --location=global \
-     --collection=default_collection \
-     --industry-vertical=GENERIC
+   aws kendra create-index \
+     --name YOUR_INDEX_NAME \
+     --role-arn arn:aws:iam::YOUR_ACCOUNT:role/KendraRole \
+     --edition DEVELOPER_EDITION
    ```
 
-2. **Import Documents**:
+2. **Add Data Source**:
    ```bash
-   gcloud alpha discovery-engine documents import \
-     --data-store=YOUR_DATASTORE_ID \
-     --location=global \
-     --gcs-uri=gs://your-bucket/documents/*.pdf
+   aws kendra create-data-source \
+     --index-id YOUR_INDEX_ID \
+     --name YOUR_DATASOURCE_NAME \
+     --type S3 \
+     --configuration '{"S3Configuration":{"BucketName":"your-bucket"}}'
    ```
 
 3. **Update Configuration**:
-   - Set `VERTEX_DATASTORE_ID` in `.env`
-   - Set `GCP_PROJECT_ID` in `.env`
+   - Set `AWS_KENDRA_INDEX_ID` in `.env`
 
 ## Usage Examples
 
@@ -236,7 +237,7 @@ VERTEX_DATASTORE_ID=your_datastore_id
   ],
   "tools": [
     {
-      "googleSearchRetrieval": {
+      "webSearchRetrieval": {
         "dynamicRetrievalConfig": {
           "mode": "MODE_DYNAMIC",
           "dynamicThreshold": 0.7
@@ -266,8 +267,8 @@ VERTEX_DATASTORE_ID=your_datastore_id
   "tools": [
     {
       "retrieval": {
-        "vertexAiSearch": {
-          "datastore": "projects/PROJECT_ID/locations/global/collections/default_collection/dataStores/DATASTORE_ID"
+        "kendraSearch": {
+          "indexId": "YOUR_KENDRA_INDEX_ID"
         },
         "disableAttribution": false
       }
@@ -389,7 +390,7 @@ test('should use web grounding for factual questions', () async {
 
 1. **API Costs**: Grounded search is more expensive than regular AI
 2. **Latency**: Web/document search adds 1-3 seconds
-3. **Datastore Setup**: Requires Vertex AI Search configuration
+3. **Datastore Setup**: Requires Amazon Kendra configuration
 4. **Citation Quality**: Depends on source availability
 
 ## Future Enhancements
@@ -403,14 +404,14 @@ test('should use web grounding for factual questions', () async {
 
 ## Resources
 
-- [Nova Grounding Documentation](https://ai.google.dev/nova-api/docs/grounding)
-- [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction)
-- [Google Search Grounding](https://ai.google.dev/nova-api/docs/grounding#google-search)
+- [Amazon Bedrock Documentation](https://docs.aws.amazon.com/bedrock/)
+- [Amazon Kendra](https://docs.aws.amazon.com/kendra/)
+- [Amazon Nova Models](https://docs.aws.amazon.com/nova/)
 
 ## Support
 
 For issues or questions:
 - Check logs: `[Grounded Search]` and `[Grounded Chat]`
-- Verify API keys in `.env`
-- Ensure Vertex AI Search is configured
+- Verify AWS credentials in `.env`
+- Ensure Amazon Kendra is configured
 - Test with simple queries first

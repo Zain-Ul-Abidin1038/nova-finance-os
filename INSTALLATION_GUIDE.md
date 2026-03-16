@@ -116,20 +116,21 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 **Important:** Finance OS requires a Nova API key for AI features.
 
 #### Get Nova API Key (Free)
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with your Google account
-3. Click **Create API Key**
-4. Copy the generated key
+1. Visit [AWS Console](https://console.aws.amazon.com/bedrock/)
+2. Sign in with your AWS account
+3. Enable Amazon Nova models in Bedrock
+4. Create IAM user with Bedrock permissions
+5. Copy the Access Key ID and Secret Access Key
 
 #### Add API Key to App
 1. Open Finance OS
 2. Tap **Settings** (gear icon)
 3. Tap **API Configuration**
-4. Paste your Nova API key
+4. Paste your AWS credentials
 5. Tap **Save**
 6. Restart the app
 
-**Cost:** Nova API is free for moderate usage (~$0.78/month for typical use)
+**Cost:** Amazon Nova via Bedrock is pay-per-use (~$0.78/month for typical use)
 
 ### Step 3: Configure AWS (Optional)
 
@@ -210,16 +211,16 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 
 #### "Invalid API Key" Error
 **Solution:**
-1. Verify API key is copied correctly (no spaces)
-2. Check API key is enabled in Google AI Studio
-3. Ensure billing is enabled (if required)
-4. Try generating a new API key
+1. Verify AWS credentials are copied correctly (no spaces)
+2. Check IAM user has Bedrock permissions in AWS Console
+3. Ensure Amazon Nova models are enabled in Bedrock
+4. Try generating new access keys
 
 #### "API Quota Exceeded" Error
 **Solution:**
-1. Check usage in Google AI Studio
+1. Check usage in AWS Bedrock Console
 2. Wait for quota reset (usually 24 hours)
-3. Consider upgrading to paid tier
+3. Request a service limit increase
 4. Reduce API usage temporarily
 
 ### Performance Issues
@@ -325,10 +326,10 @@ adb shell am start -n com.example.novaAccountant/.MainActivity
 ## 🔐 Security Best Practices
 
 ### API Key Security
-- ✅ Never share your API key
+- ✅ Never share your AWS credentials
 - ✅ Rotate keys regularly (every 90 days)
 - ✅ Use separate keys for dev/prod
-- ✅ Monitor usage in Google AI Studio
+- ✅ Monitor usage in AWS Bedrock Console
 
 ### Account Security
 - ✅ Use strong, unique password
@@ -380,7 +381,7 @@ When reporting issues, please include:
 - [ ] Android 5.0+ or iOS 12.0+
 - [ ] 200 MB free storage
 - [ ] Internet connection
-- [ ] Google account (for API key)
+- [ ] AWS account (for AI features)
 
 ### Installation
 - [ ] Downloaded APK/TestFlight
@@ -391,7 +392,7 @@ When reporting issues, please include:
 ### Configuration
 - [ ] Created account
 - [ ] Verified email
-- [ ] Added Nova API key
+- [ ] Added AWS credentials
 - [ ] Tested receipt scanning
 - [ ] Configured AWS (optional)
 

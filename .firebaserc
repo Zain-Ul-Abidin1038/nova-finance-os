@@ -1,9 +1,0 @@
-{
-  "projects": {
-    "default": "ghost-accountant",
-    "production": "ghost-accountant-prod",
-    "staging": "ghost-accountant-staging"
-  },
-  "targets": {},
-  "etags": {}
-}

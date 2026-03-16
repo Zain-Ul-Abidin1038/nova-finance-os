@@ -148,9 +148,16 @@ class NovaSchemas {
 
 /// Provider for NovaServiceV3 (legacy compatibility)
 final novaServiceV3Provider = Provider<NovaServiceV3>((ref) {
-  final accessKeyId = dotenv.env['AWS_ACCESS_KEY_ID'] ?? 'your_aws_access_key_id_here';
-  final secretAccessKey = dotenv.env['AWS_SECRET_ACCESS_KEY'] ?? 'your_aws_secret_access_key_here';
+  final accessKeyId = dotenv.env['AWS_ACCESS_KEY_ID'] ?? '';
+  final secretAccessKey = dotenv.env['AWS_SECRET_ACCESS_KEY'] ?? '';
   final region = dotenv.env['AWS_REGION'] ?? 'us-east-1';
+  
+  if (accessKeyId.isEmpty || secretAccessKey.isEmpty || 
+      accessKeyId == 'your_aws_access_key_id_here' || 
+      secretAccessKey == 'your_aws_secret_access_key_here') {
+    print('[NovaServiceV3] ⚠️ AWS credentials not configured in .env file');
+    print('[NovaServiceV3] Chat will use local fallback responses');
+  }
   
   return NovaServiceV3(
     accessKeyId: accessKeyId,

@@ -198,7 +198,7 @@ Finance OS v1.0.0 is the first production release of the world's first **AI-Powe
 - **Go Router 17.1.0** - Navigation
 
 ### AI & Intelligence
-- **Google Nova 3 Flash/Pro** - Multimodal AI
+- **Amazon Nova (Lite & Pro)** - Multimodal AI via AWS Bedrock
 - **Custom Middleware** - 8-layer intelligent system
 - **50+ AI Systems** - Comprehensive intelligence
 
@@ -206,7 +206,6 @@ Finance OS v1.0.0 is the first production release of the world's first **AI-Powe
 - **AWS Cognito** - Authentication
 - **AWS S3** - Storage and audit vault
 - **AWS DynamoDB** - NoSQL database (optional)
-- **Firebase** - Real-time sync
 
 ### Local Storage
 - **Hive** - Fast, encrypted database
@@ -253,10 +252,10 @@ Finance OS v1.0.0 is the first production release of the world's first **AI-Powe
 5. Save and restart app
 
 ### Getting Nova API Key
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with Google account
-3. Create new API key
-4. Copy and paste into app settings
+1. Visit [AWS Bedrock Console](https://console.aws.amazon.com/bedrock/)
+2. Sign in with AWS account
+3. Enable Amazon Nova models
+4. Create IAM credentials and paste into app settings
 
 ---
 
@@ -312,9 +311,9 @@ Finance OS v1.0.0 is the first production release of the world's first **AI-Powe
 - **USER_MANUAL.md** - Detailed user guide (coming soon)
 
 ### Technical Documentation
-- **GEMINI_V3_COMPLETE_ARCHITECTURE.md** - AI engine architecture
+- **NOVA_AI_COMPLETE_ARCHITECTURE.md** - AI engine architecture
 - **AWS_CONFIGURATION_COMPLETE.md** - AWS setup
-- **TECHNICAL_ARCHITECTURE_AWS_GEMINI.md** - Technical deep dive
+- **TECHNICAL_ARCHITECTURE_AWS_NOVA.md** - Technical deep dive
 - **FINANCIAL_LIFE_OS_COMPLETE.md** - Financial Life OS overview
 
 ### Developer Guides
@@ -355,7 +354,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Google Nova Team** - For the amazing AI capabilities
+- **Amazon Nova Team** - For the amazing AI capabilities
 - **AWS Amplify Team** - For the robust backend infrastructure
 - **Flutter Team** - For the excellent cross-platform framework
 - **Open Source Community** - For the incredible packages and tools

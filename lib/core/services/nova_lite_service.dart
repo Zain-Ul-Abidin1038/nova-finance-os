@@ -31,6 +31,17 @@ class NovaLiteService {
     int? maxTokens,
   }) async {
     try {
+      // Build system prompt from context
+      String? systemPrompt;
+      if (context != null) {
+        final systemInstruction = context['systemInstruction'] as String?;
+        if (systemInstruction != null) {
+          systemPrompt = systemInstruction;
+        } else {
+          systemPrompt = 'Financial context: ${jsonEncode(context)}';
+        }
+      }
+
       final messages = [
         {
           'role': 'user',
@@ -40,7 +51,7 @@ class NovaLiteService {
         }
       ];
 
-      final requestBody = {
+      final requestBody = <String, dynamic>{
         'messages': messages,
         'inferenceConfig': {
           'temperature': temperature ?? (deepReasoning ? 0.3 : 0.7),
@@ -49,12 +60,10 @@ class NovaLiteService {
         },
       };
 
-      // Add system context if provided
-      if (context != null) {
+      // Add system prompt if available
+      if (systemPrompt != null) {
         requestBody['system'] = [
-          {
-            'text': 'Financial context: ${jsonEncode(context)}'
-          }
+          {'text': systemPrompt}
         ];
       }
 

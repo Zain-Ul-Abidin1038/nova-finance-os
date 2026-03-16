@@ -61,7 +61,7 @@ class DecisionDispatcher {
     // TODO: Integrate with push notification service
     // For now, just log
     // In production, use:
-    // - Firebase Cloud Messaging
+    // - Amazon SNS (Simple Notification Service)
     // - Local notifications
     // - In-app alert dialog
   }

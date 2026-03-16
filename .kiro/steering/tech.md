@@ -17,10 +17,11 @@ inclusion: always
 - `go_router` ^17.1.0 - Declarative routing
 
 ### Backend & AI
-- `firebase_core` ^4.4.0 - Firebase initialization
-- `firebase_vertexai` ^2.2.0 - Nova AI integration
 - `amplify_flutter` ^2.9.0 - AWS Amplify SDK
 - `amplify_auth_cognito` ^2.9.0 - Authentication
+- `aws_common` ^0.7.1 - AWS common utilities
+- `aws_signature_v4` ^0.6.10 - AWS Signature V4 auth
+- `http` ^1.6.0 - HTTP client for AWS Bedrock API calls
 
 ### Device Features
 - `image_picker` ^1.2.1 - Camera/gallery access
@@ -88,9 +89,9 @@ flutter analyze
 # Lint rules defined in analysis_options.yaml
 ```
 
-## Firebase Setup
+## AWS Bedrock Setup
 
-Requires `flutterfire configure` to generate `firebase_options.dart` with platform-specific configuration.
+AI services use Amazon Nova models via AWS Bedrock with Signature V4 authentication. Configure AWS credentials in `.env` file.
 
 ## AWS Amplify
 
