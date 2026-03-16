@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
 
     <application
-        android:label="ghost_accountant"
+        android:label="Finance OS"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

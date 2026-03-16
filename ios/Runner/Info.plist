@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Ghost Accountant</string>
+	<string>Finance OS</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>ghost_accountant</string>
+	<string>Finance OS</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -23,6 +25,39 @@
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Finance OS needs full calendar access to manage tax events.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Finance OS needs calendar access to schedule tax dates.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Finance OS needs camera access to scan receipts.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Finance OS needs location access to track mileage.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Finance OS needs microphone access for voice commands.</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneClassName</key>
+					<string>UIWindowScene</string>
+					<key>UISceneConfigurationName</key>
+					<string>flutter</string>
+					<key>UISceneDelegateClassName</key>
+					<string>FlutterSceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -41,19 +76,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Ghost Accountant needs camera access to scan receipts.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Ghost Accountant needs microphone access for voice commands.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Ghost Accountant needs location access to track mileage.</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Ghost Accountant needs calendar access to schedule tax dates.</string>
-	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>Ghost Accountant needs full calendar access to manage tax events.</string>
 </dict>
 </plist>
