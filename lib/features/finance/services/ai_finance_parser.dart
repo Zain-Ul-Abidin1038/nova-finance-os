@@ -453,7 +453,15 @@ CRITICAL:
       );
 
       if (response['success'] == true) {
-        final parsed = response['data'] as Map<String, dynamic>;
+        final data = response['data'];
+        if (data == null || data is! Map<String, dynamic>) {
+          // AI returned text but not parseable JSON — treat as general conversation
+          return await _handleGeneralConversation(
+            {'action': 'unknown'},
+            userMessage,
+          );
+        }
+        final parsed = data;
         final thoughtSignature = response['thoughtSignature'] ?? '';
         
         safePrint('[AI Parser] Parsed: $parsed');

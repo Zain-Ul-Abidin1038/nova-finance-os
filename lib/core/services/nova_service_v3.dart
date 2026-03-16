@@ -1,6 +1,7 @@
 // Legacy adapter for NovaServiceV3
 // Redirects to new NovaAIOrchestrator
 
+import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'nova_ai_orchestrator.dart';
@@ -33,10 +34,14 @@ class NovaServiceV3 {
       fullContext['systemInstruction'] = systemInstruction;
     }
     
-    return await orchestrator.processFinancialMessage(
+    final result = await orchestrator.processFinancialMessage(
       message: prompt,
       context: fullContext,
     );
+    
+    // Normalize response keys for callers that expect 'text' instead of 'message'
+    result['text'] = result['message'] ?? '';
+    return result;
   }
 
   // Structured message with schema
@@ -54,10 +59,33 @@ class NovaServiceV3 {
       fullContext['responseSchema'] = responseSchema;
     }
     
-    return await orchestrator.processFinancialMessage(
+    final result = await orchestrator.processFinancialMessage(
       message: prompt,
       context: fullContext,
     );
+    
+    // Normalize: callers expect 'text' and 'data' (parsed JSON from the response)
+    final messageText = result['message'] ?? '';
+    result['text'] = messageText;
+    
+    // Try to parse the AI response text as JSON for structured data
+    if (result['success'] == true && messageText is String && messageText.isNotEmpty) {
+      try {
+        // Extract JSON from the response text
+        final jsonMatch = RegExp(r'\{[\s\S]*\}').firstMatch(messageText);
+        if (jsonMatch != null) {
+          final parsed = jsonDecode(jsonMatch.group(0)!);
+          if (parsed is Map<String, dynamic>) {
+            result['data'] = parsed;
+          }
+        }
+      } catch (_) {
+        // If JSON parsing fails, set data to null — caller handles it
+        result['data'] = null;
+      }
+    }
+    
+    return result;
   }
 
   // Legacy method for receipt analysis

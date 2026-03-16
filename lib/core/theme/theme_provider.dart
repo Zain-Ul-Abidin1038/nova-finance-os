@@ -15,17 +15,17 @@ class ThemeModeNotifier extends Notifier<ThemeMode> {
   @override
   ThemeMode build() {
     _loadTheme();
-    return ThemeMode.light;
+    return ThemeMode.dark;
   }
 
   Future<void> _loadTheme() async {
     try {
       final box = await Hive.openBox(_themeBoxName);
-      final savedTheme = box.get(_themeModeKey, defaultValue: 'light') as String;
+      final savedTheme = box.get(_themeModeKey, defaultValue: 'dark') as String;
       state = savedTheme == 'light' ? ThemeMode.light : ThemeMode.dark;
     } catch (e) {
-      // If loading fails, keep default light theme
-      state = ThemeMode.light;
+      // If loading fails, keep default dark theme
+      state = ThemeMode.dark;
     }
   }
 

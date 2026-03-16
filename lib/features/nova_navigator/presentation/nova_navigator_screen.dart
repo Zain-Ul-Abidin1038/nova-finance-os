@@ -101,40 +101,40 @@ class _NovaNavigatorScreenState extends ConsumerState<NovaNavigatorScreen> {
 
     final quickTasks = [
       {
-        'icon': Icons.flight_takeoff,
-        'title': 'Book Flight',
-        'description': 'Find and book flights',
-        'task': 'Book a flight from Delhi to Mumbai on March 15',
+        'icon': Icons.analytics_outlined,
+        'title': 'Spending Analysis',
+        'description': 'Analyze your spending patterns',
+        'task': 'Analyze my spending patterns this month and suggest where I can save',
       },
       {
-        'icon': Icons.local_pizza,
-        'title': 'Order Food',
-        'description': 'Order pizza or food delivery',
-        'task': 'Order a large pepperoni pizza from Dominos',
+        'icon': Icons.account_balance_wallet_outlined,
+        'title': 'Budget Plan',
+        'description': 'Create a smart budget',
+        'task': 'Create a monthly budget plan based on my income and expenses',
       },
       {
-        'icon': Icons.shopping_cart,
-        'title': 'Online Shopping',
-        'description': 'Find and purchase products',
-        'task': 'Find and buy a wireless mouse under ₹1000',
+        'icon': Icons.category_outlined,
+        'title': 'Categorize Expenses',
+        'description': 'Auto-categorize transactions',
+        'task': 'Review and categorize my recent uncategorized expenses',
       },
       {
-        'icon': Icons.movie,
-        'title': 'Book Movie',
-        'description': 'Book movie tickets',
-        'task': 'Book 2 tickets for the latest movie tonight',
+        'icon': Icons.trending_up,
+        'title': 'Cashflow Forecast',
+        'description': 'Predict future cashflow',
+        'task': 'Forecast my cashflow for the next 30 days based on my transaction history',
       },
       {
-        'icon': Icons.hotel,
-        'title': 'Book Hotel',
-        'description': 'Find and book accommodation',
-        'task': 'Book a hotel in Goa for 2 nights next weekend',
+        'icon': Icons.receipt_long_outlined,
+        'title': 'Tax Summary',
+        'description': 'Prepare tax deductions',
+        'task': 'Summarize my tax-deductible expenses and generate a tax report',
       },
       {
-        'icon': Icons.account_balance,
-        'title': 'Pay Bills',
-        'description': 'Pay utility bills',
-        'task': 'Pay my electricity bill',
+        'icon': Icons.savings_outlined,
+        'title': 'Savings Goal',
+        'description': 'Plan your savings',
+        'task': 'Help me set up a savings goal and calculate how much I need to save monthly',
       },
     ];
 
@@ -327,7 +327,7 @@ class _NovaNavigatorScreenState extends ConsumerState<NovaNavigatorScreen> {
                   ),
                 ),
                 Text(
-                  'AI Agent • Autonomous Actions',
+                  'AI Agent • Financial Automation',
                   style: TextStyle(
                     color: secondaryTextColor,
                     fontSize: 11,
@@ -381,7 +381,7 @@ class _NovaNavigatorScreenState extends ConsumerState<NovaNavigatorScreen> {
                     controller: _taskController,
                     style: TextStyle(color: textColor, fontSize: 14),
                     decoration: InputDecoration(
-                      hintText: 'e.g., "Book a flight to Mumbai" or "Order pizza"',
+                      hintText: 'e.g., "Analyze my spending" or "Create a budget plan"',
                       hintStyle: TextStyle(
                         color: secondaryTextColor.withValues(alpha: 0.6),
                         fontSize: 14,

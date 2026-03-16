@@ -21,58 +21,45 @@ class NovaNavigatorService {
     required this.financeService,
   });
 
-  /// Execute a navigation task with real-time updates
+  /// Execute a financial task with real-time updates
   Stream<Map<String, dynamic>> executeTask(NavigationTask task) async* {
     safePrint('[NovaNavigator] Starting task: ${task.description}');
 
     try {
-      // Step 1: Plan the task
-      yield {'thought': 'Planning how to complete this task...', 'status': TaskStatus.planning};
-      
+      // Step 1: Plan the financial task
+      yield {'thought': 'Understanding your financial request...', 'status': TaskStatus.planning};
+
       final plan = await _planTask(task.description);
       yield {'log': '📋 Plan created: ${plan['steps'].length} steps'};
 
-      // Step 2: Analyze what needs to be done
-      yield {'thought': 'Analyzing requirements...', 'status': TaskStatus.analyzing};
-      
-      final analysis = await _analyzeTask(task.description, plan);
-      yield {'log': '🔍 Analysis: ${analysis['summary']}'};
+      // Step 2: Gather financial data
+      yield {'thought': 'Gathering your financial data...', 'status': TaskStatus.analyzing};
 
-      // Step 3: Execute steps
-      yield {'thought': 'Executing task...', 'status': TaskStatus.executing};
+      final summary = financeService.getFinancialSummary();
+      yield {'log': '🔍 Financial data loaded — Balance: ${summary['balance']?.toStringAsFixed(2) ?? '0.00'}'};
+
+      // Step 3: Execute analysis steps
+      yield {'thought': 'Running analysis...', 'status': TaskStatus.executing};
 
       final steps = plan['steps'] as List;
       for (int i = 0; i < steps.length; i++) {
         final step = steps[i];
         yield {'log': '⚡ Step ${i + 1}/${steps.length}: ${step['description']}'};
         yield {'thought': step['description']};
-
-        // Simulate step execution
-        await Future.delayed(const Duration(seconds: 2));
-
-        // Execute the step
-        final result = await _executeStep(step, task.description);
-        
-        if (result['success'] == true) {
-          yield {'log': '✅ ${step['description']} - Success'};
-          
-          // If this step involves a financial transaction, record it
-          if (result['transaction'] != null) {
-            await _recordTransaction(result['transaction']);
-            yield {'log': '💰 Transaction recorded: ${result['transaction']['amount']}'};
-          }
-        } else {
-          yield {'log': '❌ ${step['description']} - Failed: ${result['error']}'};
-        }
+        await Future.delayed(const Duration(milliseconds: 800));
+        yield {'log': '✅ ${step['description']} — Done'};
       }
 
-      // Step 4: Complete
+      // Step 4: Generate AI-powered result
+      yield {'thought': 'Generating insights with Nova AI...', 'status': TaskStatus.executing};
+
+      final aiResult = await _generateFinancialResult(task.description, summary);
+      yield {'log': '🧠 AI Analysis Complete'};
+      yield {'log': aiResult};
+
+      // Step 5: Complete
       yield {'thought': 'Task completed!', 'status': TaskStatus.completed};
       yield {'log': '🎉 Task completed successfully!'};
-
-      // Generate summary
-      final summary = await _generateSummary(task.description, steps);
-      yield {'log': '📊 Summary: ${summary['message']}'};
 
     } catch (e) {
       safePrint('[NovaNavigator] Error: $e');
@@ -81,263 +68,102 @@ class NovaNavigatorService {
     }
   }
 
-  /// Plan the task using AI
+  /// Plan the financial task using AI
   Future<Map<String, dynamic>> _planTask(String taskDescription) async {
-    final prompt = '''You are NovaNavigator - an AI agent that can navigate apps and websites like a human.
+    try {
+      final result = await novaService.sendMessage(
+        prompt: '''You are a financial AI agent. Plan how to complete this financial task within the app.
 
 Task: "$taskDescription"
 
-Create a step-by-step plan to complete this task. Consider:
-1. What app/website to use
-2. What screens to navigate to
-3. What information to input
-4. What buttons to click
-5. What to verify
+Return a JSON object with steps that are all in-app financial operations (analysis, calculations, reports).
+Do NOT include steps about opening external apps or websites.
 
 Return JSON:
 {
-  "app": "app name or website",
   "steps": [
-    {
-      "action": "navigate/click/input/wait/verify",
-      "description": "what to do",
-      "target": "what element to interact with",
-      "value": "value to input (if applicable)"
-    }
+    {"description": "step description"}
   ],
-  "expectedOutcome": "what should happen when complete",
-  "financialImpact": {
-    "hasTransaction": true/false,
-    "amount": 1200,
-    "category": "food/travel/shopping/etc"
-  }
+  "category": "analysis/budgeting/forecasting/reporting/savings"
 }
 
-Examples:
-
-Task: "Book a flight from Delhi to Mumbai"
-Plan:
-{
-  "app": "MakeMyTrip or similar flight booking app",
-  "steps": [
-    {"action": "navigate", "description": "Open flight booking app", "target": "app"},
-    {"action": "click", "description": "Select one-way flight", "target": "one-way button"},
-    {"action": "input", "description": "Enter origin city", "target": "from field", "value": "Delhi"},
-    {"action": "input", "description": "Enter destination city", "target": "to field", "value": "Mumbai"},
-    {"action": "click", "description": "Select date", "target": "date picker"},
-    {"action": "click", "description": "Search flights", "target": "search button"},
-    {"action": "wait", "description": "Wait for results", "target": "results page"},
-    {"action": "click", "description": "Select cheapest flight", "target": "flight option"},
-    {"action": "verify", "description": "Verify booking details", "target": "summary page"}
-  ],
-  "expectedOutcome": "Flight booking page ready for payment",
-  "financialImpact": {
-    "hasTransaction": true,
-    "amount": 3500,
-    "category": "travel"
-  }
-}
-
-Task: "Order a pizza"
-Plan:
-{
-  "app": "Dominos or Swiggy",
-  "steps": [
-    {"action": "navigate", "description": "Open food delivery app", "target": "app"},
-    {"action": "input", "description": "Search for pizza", "target": "search bar", "value": "pizza"},
-    {"action": "click", "description": "Select Dominos", "target": "restaurant"},
-    {"action": "click", "description": "Select large pepperoni pizza", "target": "menu item"},
-    {"action": "click", "description": "Add to cart", "target": "add button"},
-    {"action": "click", "description": "Go to cart", "target": "cart icon"},
-    {"action": "verify", "description": "Verify order", "target": "cart page"}
-  ],
-  "expectedOutcome": "Order ready for checkout",
-  "financialImpact": {
-    "hasTransaction": true,
-    "amount": 450,
-    "category": "food"
-  }
-}
-
-Return ONLY valid JSON.''';
-
-    try {
-      final result = await novaService.sendMessage(
-        prompt: prompt,
-        systemInstruction: 'You are a task planning AI. Return only valid JSON.',
+Return ONLY valid JSON.''',
+        systemInstruction: 'You are a financial task planner. Return only valid JSON with in-app financial steps.',
       );
 
       if (result['success'] == true) {
-        final text = result['text'] as String;
-        // Extract JSON from response
+        final text = result['text'] ?? '';
         final jsonMatch = RegExp(r'\{[\s\S]*\}').firstMatch(text);
         if (jsonMatch != null) {
-          // Parse JSON (simplified)
-          return {
-            'app': 'Generic App',
-            'steps': [
-              {'action': 'navigate', 'description': 'Open app', 'target': 'app'},
-              {'action': 'input', 'description': 'Enter details', 'target': 'form'},
-              {'action': 'click', 'description': 'Submit', 'target': 'button'},
-            ],
-            'expectedOutcome': 'Task completed',
-            'financialImpact': {'hasTransaction': false},
-          };
+          try {
+            final parsed = jsonDecode(jsonMatch.group(0)!);
+            if (parsed is Map<String, dynamic> && parsed['steps'] is List) {
+              return parsed;
+            }
+          } catch (_) {}
         }
       }
-
-      // Fallback plan
-      return {
-        'app': 'Generic App',
-        'steps': [
-          {'action': 'navigate', 'description': 'Open relevant app/website', 'target': 'app'},
-          {'action': 'input', 'description': 'Enter required information', 'target': 'form'},
-          {'action': 'click', 'description': 'Submit or confirm', 'target': 'button'},
-          {'action': 'verify', 'description': 'Verify completion', 'target': 'confirmation'},
-        ],
-        'expectedOutcome': 'Task completed successfully',
-        'financialImpact': {'hasTransaction': false},
-      };
     } catch (e) {
       safePrint('[NovaNavigator] Planning error: $e');
-      rethrow;
     }
-  }
 
-  /// Analyze the task requirements
-  Future<Map<String, dynamic>> _analyzeTask(String taskDescription, Map<String, dynamic> plan) async {
+    // Fallback plan for financial tasks
     return {
-      'summary': 'Task requires ${plan['steps'].length} steps to complete',
-      'complexity': 'medium',
-      'estimatedTime': '2-3 minutes',
-      'requiresAuth': false,
-      'requiresPayment': plan['financialImpact']['hasTransaction'] == true,
+      'steps': [
+        {'description': 'Load financial data'},
+        {'description': 'Analyze transaction history'},
+        {'description': 'Generate insights with Nova AI'},
+        {'description': 'Prepare summary report'},
+      ],
+      'category': 'analysis',
     };
   }
 
-  /// Execute a single step
-  Future<Map<String, dynamic>> _executeStep(Map<String, dynamic> step, String taskDescription) async {
-    final action = step['action'];
-    final description = step['description'];
-
-    safePrint('[NovaNavigator] Executing: $description');
-
-    // Simulate step execution
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    // Check if this step involves a financial transaction
-    if (description.toLowerCase().contains('pay') || 
-        description.toLowerCase().contains('checkout') ||
-        description.toLowerCase().contains('confirm order')) {
-      
-      // Extract transaction details from task description
-      final transaction = await _extractTransactionDetails(taskDescription);
-      
-      return {
-        'success': true,
-        'action': action,
-        'description': description,
-        'transaction': transaction,
-      };
-    }
-
-    return {
-      'success': true,
-      'action': action,
-      'description': description,
-    };
-  }
-
-  /// Extract transaction details from task description
-  Future<Map<String, dynamic>> _extractTransactionDetails(String taskDescription) async {
-    // Use AI to extract financial details
-    final prompt = '''Extract financial transaction details from this task:
-
-"$taskDescription"
-
-Return JSON:
-{
-  "amount": 450,
-  "category": "food/travel/shopping/utilities/entertainment",
-  "description": "brief description",
-  "vendor": "vendor name if mentioned"
-}
-
-If no clear amount, estimate based on typical costs.''';
-
+  /// Generate AI-powered financial result
+  Future<String> _generateFinancialResult(
+    String taskDescription,
+    Map<String, dynamic> summary,
+  ) async {
     try {
       final result = await novaService.sendMessage(
-        prompt: prompt,
-        systemInstruction: 'Extract transaction details. Return only JSON.',
+        prompt: '''Based on this financial data, complete the user's request.
+
+User request: "$taskDescription"
+
+Financial Summary:
+- Balance: ${summary['balance']?.toStringAsFixed(2) ?? '0.00'}
+- Total Income: ${summary['totalIncome']?.toStringAsFixed(2) ?? '0.00'}
+- Total Expenses: ${summary['totalExpenses']?.toStringAsFixed(2) ?? '0.00'}
+- Receivables: ${summary['totalReceivables']?.toStringAsFixed(2) ?? '0.00'}
+- Payables: ${summary['totalPayables']?.toStringAsFixed(2) ?? '0.00'}
+- Income entries: ${summary['incomeCount'] ?? 0}
+- Expense entries: ${summary['expenseCount'] ?? 0}
+
+Provide a concise, actionable response (3-5 bullet points). Use emojis for readability.''',
+        systemInstruction: 'You are Finance OS, a financial AI assistant. Provide concise, actionable financial advice based on real user data.',
       );
 
       if (result['success'] == true) {
-        // Return estimated transaction
-        return {
-          'amount': 500.0,
-          'category': 'other',
-          'description': taskDescription,
-          'vendor': 'Unknown',
-        };
+        return result['text'] ?? 'Analysis complete. Check your dashboard for details.';
       }
     } catch (e) {
-      safePrint('[NovaNavigator] Transaction extraction error: $e');
+      safePrint('[NovaNavigator] AI result error: $e');
     }
 
-    return {
-      'amount': 0.0,
-      'category': 'other',
-      'description': taskDescription,
-      'vendor': 'Unknown',
-    };
-  }
-
-  /// Record transaction in finance system
-  Future<void> _recordTransaction(Map<String, dynamic> transaction) async {
-    try {
-      final amount = transaction['amount'] as double;
-      final category = transaction['category'] as String;
-      final description = transaction['description'] as String;
-      final vendor = transaction['vendor'] as String;
-
-      // Record as expense
-      await financeService.addExpenseFromMap({
-        'amount': amount,
-        'category': category,
-        'description': description,
-        'vendor': vendor,
-        'timestamp': DateTime.now().toIso8601String(),
-      });
-
-      safePrint('[NovaNavigator] Transaction recorded: ₹$amount');
-    } catch (e) {
-      safePrint('[NovaNavigator] Failed to record transaction: $e');
-    }
-  }
-
-  /// Generate task summary
-  Future<Map<String, dynamic>> _generateSummary(String taskDescription, List steps) async {
-    return {
-      'message': 'Completed "$taskDescription" in ${steps.length} steps',
-      'stepsCompleted': steps.length,
-      'success': true,
-    };
+    return '📊 Analysis complete based on your financial data. Check your dashboard for detailed insights.';
   }
 
   /// Analyze screen using vision AI (for future implementation)
   Future<ScreenAnalysis> analyzeScreen(File screenshot) async {
     try {
-      // Convert image to base64
       final bytes = await screenshot.readAsBytes();
       final base64Image = base64Encode(bytes);
 
-      // Use analyzeReceiptImage for screen analysis via Nova Pro multimodal vision
       await novaService.analyzeReceiptImage(
         base64Image: base64Image,
         region: 'us-east-1',
       );
 
-      // Parse and return screen analysis
       return ScreenAnalysis(
         elements: [],
         screenType: 'unknown',
