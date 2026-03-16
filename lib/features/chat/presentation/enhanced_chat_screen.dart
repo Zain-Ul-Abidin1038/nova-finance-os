@@ -384,7 +384,7 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
                 ),
                 child: ClipOval(
                   child: Image.asset(
-                    'assets/images/nova_profile.png',
+                    'assets/images/nova.png',
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
@@ -641,7 +641,7 @@ class _EnhancedChatScreenState extends ConsumerState<EnhancedChatScreen> {
             ),
             child: ClipOval(
               child: Image.asset(
-                'assets/images/nova_profile.png',
+                'assets/images/nova.png',
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
